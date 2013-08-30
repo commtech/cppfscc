@@ -14,7 +14,7 @@ This README file is best viewed [online](http://github.com/commtech/cppfscc/).
 Lets get started with a quick programming example for fun.
 
 _This tutorial has already been set up for you at_ 
-[`examples/tutorial/`](https://github.com/commtech/cppfscc/tree/master/examples/tutorial).
+[`examples/tutorial.cpp`](https://github.com/commtech/cppfscc/tree/master/examples/tutorial.cpp).
 
 First, drop `cfscc.dll` and `cfscc.lib` into a test directory. Now that those files are 
 copied over, create a new C file (named tutorial.c) with the following code.
@@ -48,7 +48,7 @@ For this example I will use the Visual Studio command line compiler, but
 you can use your compiler of choice.
 
 ```
-# cl /W4 /MT tutorial.c cfscc.lib /I ../../src/
+# cl /EHsc tutorial.cpp ..\cppfscc.lib /I ..\src
 ```
 
 Now attach the included loopback connector.
