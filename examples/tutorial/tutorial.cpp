@@ -7,7 +7,7 @@ int main(void)
 {
 	char idata[20] = {0};
 
-    FSCC::Port p(0);
+	FSCC::Port p(0);
 
 	/* Send "Hello world!" text */
 	p.Write("Hello world!");
