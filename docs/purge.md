@@ -12,7 +12,7 @@ there are a couple of methods you can use.
 
 ## Execute
 ```c++
-void Purge(bool tx, bool rx) throw(SystemException)
+void Purge(bool tx, bool rx) throw(SystemException);
 ```
 
 ###### Examples
@@ -41,9 +41,9 @@ p.Purge(false, true);
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

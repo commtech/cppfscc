@@ -21,7 +21,7 @@ desired baud rate using the BGR register.
 
 ## Set
 ```c++
-void SetClockFrequency(unsigned frequency) throw(SystemException)
+void SetClockFrequency(unsigned frequency) throw(SystemException);
 ```
 
 
@@ -35,9 +35,9 @@ p.SetClockFrequency(18432000);
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

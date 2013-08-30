@@ -12,7 +12,7 @@ option for setting it's input and output memory cap.
 
 
 ## Structure
-```c
+```c++
 struct fscc_memory_cap {
     int input;
     int output;
@@ -21,7 +21,7 @@ struct fscc_memory_cap {
 
 
 ## Macros
-```c
+```c++
 FSCC_MEMORY_CAP_INIT(memcap)
 ```
 
@@ -35,12 +35,12 @@ only set/receive the memory cap you need.
 
 
 ## Get
-```c
-struct fscc_memory_cap GetMemoryCap(void) throw(SystemException)
+```c++
+struct fscc_memory_cap GetMemoryCap(void) throw(SystemException);
 ```
 
 ###### Examples
-```
+```c++
 #include <fscc.hpp>
 ...
 
@@ -55,18 +55,18 @@ At this point `memcap.input` and `memcap.output` would be set to their respectiv
 values.
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Set
-```c
-void SetMemoryCap(const struct fscc_memory_cap &memcap) throw(SystemException)
+```c++
+void SetMemoryCap(const struct fscc_memory_cap &memcap) throw(SystemException);
 ```
 
 ###### Examples
-```
+```c++
 #include <fscc.hpp>
 ...
 
@@ -81,9 +81,9 @@ p.SetMemoryCap(memcap);
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

@@ -81,7 +81,7 @@ only set/receive the registers you need.
 
 ## Set
 ```c++
-void SetRegisters(const Registers &regs) throw(SystemException)
+void SetRegisters(const Registers &regs) throw(SystemException);
 ```
 
 ###### Examples
@@ -100,13 +100,13 @@ p.SetRegisters(registers);
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Get
-```c
+```c++
 Registers GetRegisters(void) throw(SystemException);
 ```
 
@@ -129,11 +129,11 @@ At this point `regs.CCR0` and `regs.BGR` would be set to their respective
 values.
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources
-- Complete example: [`examples\append-status.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-status/append-status.cpp)
+- Complete example: [`examples\registers.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-status/registers.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

@@ -9,12 +9,12 @@
 
 ## Get
 ```c++
-bool GetRxMultiple(void) throw(SystemException)
+bool GetRxMultiple(void) throw(SystemException);
 ```
 
 ###### Examples
 ```c++
-#include <fscc.h>
+#include <fscc.hpp>
 ...
 
 bool status;
@@ -23,47 +23,47 @@ status = p.GetRxMultiple();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Enable
 ```c++
-void EnableRxMultiple(void) throw(SystemException)
+void EnableRxMultiple(void) throw(SystemException);
 ```
 
 ###### Examples
 ```c++
-#include <fscc.h>
+#include <fscc.hpp>
 ...
 
 p.EnableRxMultiple();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Disable
 ```c++
-void DisableRxMultiple(void) throw(SystemException)
+void DisableRxMultiple(void) throw(SystemException);
 ```
 
 ###### Examples
 ```c++
-#include <fscc.h>
+#include <fscc.hpp>
 ...
 
 p.DisableRxMultiple();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

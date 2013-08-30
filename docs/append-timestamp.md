@@ -9,11 +9,11 @@
 
 ## Get
 ```c++
-bool GetAppendTimestamp(void) throw(SystemException)
+bool GetAppendTimestamp(void) throw(SystemException);
 ```
 
 ###### Examples
-```c
+```c++
 #include <fscc.hpp>
 ...
 
@@ -23,18 +23,18 @@ status = p.GetAppendStatus();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Enable
-```c
-void EnableAppendTimestamp(void) throw(SystemException)
+```c++
+void EnableAppendTimestamp(void) throw(SystemException);
 ```
 
 ###### Examples
-```c
+```c++
 #include <fscc.hpp>
 ...
 
@@ -42,18 +42,18 @@ p.EnableAppendStatus()
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Disable
-```c
-void EnableAppendTimestamp(void) throw(SystemException)
+```c++
+void EnableAppendTimestamp(void) throw(SystemException);
 ```
 
 ###### Examples
-```c
+```c++
 #include <fscc.hpp>
 ...
 
@@ -61,11 +61,11 @@ p.DisableAppendStatus()
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources
-- Complete example: [`examples\append-timestamp.c`](https://github.com/commtech/cppfscc/blob/master/examples/append-timestamp/append-timestamp.c)
-- Implemenation details: [`src\fscc.c`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)
+- Complete example: [`examples\append-timestamp.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-timestamp/append-timestamp.cpp)
+- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

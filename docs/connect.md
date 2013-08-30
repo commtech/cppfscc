@@ -30,9 +30,9 @@ FSCC::Port p(0);
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

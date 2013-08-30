@@ -12,13 +12,13 @@
 | `fscc-linux`   | `v2.0.0` 
 
 ## Get
-```c
-unsigned GetTxModifiers(void)
+```c++
+unsigned GetTxModifiers(void) throw(SystemException);
 ```
 
 ###### Examples
-```
-#include <fscc.h>
+```c++
+#include <fscc.hpp>
 ...
 
 unsigned modifiers;
@@ -27,18 +27,18 @@ modifiers = p.GetTxModifiers();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Set
-```c
-void SetTxModifiers(unsigned modifiers)
+```c++
+void SetTxModifiers(unsigned modifiers) throw(SystemException);
 ```
 
 ###### Examples
-```
+```c++
 #include <fscc.hpp>
 ...
 
@@ -46,9 +46,9 @@ p.SetTxModifiers(XF | XREP);
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

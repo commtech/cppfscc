@@ -9,7 +9,7 @@
 
 ## Get
 ```c++
-bool GetAppendStatus(void) throw(SystemException)
+bool GetIgnoreTimeout(void) throw(SystemException);
 ```
 
 
@@ -24,14 +24,14 @@ status = p.GetIgnoreTimeout();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Enable
 ```c++
-void EnableIgnoreTimeout(void) throw(SystemException)
+void EnableIgnoreTimeout(void) throw(SystemException);
 ```
 
 ###### Examples
@@ -43,14 +43,14 @@ p.EnableIgnoreTimeout()
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Disable
 ```c++
-void DisableIgnoreTimeout(void) throw(SystemException)
+void DisableIgnoreTimeout(void) throw(SystemException);
 ```
 
 ###### Examples
@@ -62,9 +62,9 @@ p.DisableIgnoreTimeout()
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

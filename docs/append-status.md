@@ -16,7 +16,7 @@ a few methods of enabling this additional data.
 
 ## Get
 ```c++
-bool GetAppendStatus(void) throw(SystemException)
+bool GetAppendStatus(void) throw(SystemException);
 ```
 
 ###### Examples
@@ -30,14 +30,14 @@ status = p.GetAppendStatus();
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Enable
 ```c++
-void EnableAppendStatus(void) throw(SystemException)
+void EnableAppendStatus(void) throw(SystemException);
 ```
 
 ###### Examples
@@ -49,14 +49,14 @@ p.EnableAppendStatus()
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ## Disable
 ```c++
-void DisableAppendStatus(void) throw(SystemException)
+void DisableAppendStatus(void) throw(SystemException);
 ```
 
 
@@ -69,11 +69,11 @@ p.DisableAppendStatus()
 ```
 
 ###### Support
-| Code           | Version
-| -------------- | --------
-| `cppfscc`        | `v1.0.0`
+| Code      | Version
+| --------- | --------
+| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources
-- Complete example: [`examples\append-status.c`](https://github.com/commtech/cppfscc/blob/master/examples/append-status/append-status.cpp)
+- Complete example: [`examples\append-status.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-status/append-status.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)
