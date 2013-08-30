@@ -1,0 +1,56 @@
+# TX Modifiers
+
+- XF - Normal transmit - disable modifiers
+- XREP - Transmit repeat
+- TXT - Transmit on timer
+- TXEXT - Transmit on external signal
+
+###### Driver Support
+| Code           | Version
+| -------------- | --------
+| `fscc-windows` | `v2.0.0` 
+| `fscc-linux`   | `v2.0.0` 
+
+## Get
+```c
+unsigned GetTxModifiers(void)
+```
+
+###### Examples
+```
+#include <fscc.h>
+...
+
+unsigned modifiers;
+
+modifiers = p.GetTxModifiers();
+```
+
+###### Support
+| Code           | Version
+| -------------- | --------
+| `cppfscc`        | `v1.0.0`
+
+
+## Set
+```c
+void SetTxModifiers(unsigned modifiers)
+```
+
+###### Examples
+```
+#include <fscc.hpp>
+...
+
+p.SetTxModifiers(XF | XREP);
+```
+
+###### Support
+| Code           | Version
+| -------------- | --------
+| `cppfscc`        | `v1.0.0`
+
+
+### Additional Resources
+- Complete example: [`examples\tx-modifiers.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/tx-modifiers/tx-modifiers.cpp)
+- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)
