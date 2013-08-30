@@ -52,5 +52,5 @@ p.SetTxModifiers(XF | XREP);
 
 
 ### Additional Resources
-- Complete example: [`examples\tx-modifiers.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/tx-modifiers/tx-modifiers.cpp)
+- Complete example: [`examples\tx-modifiers.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/tx-modifiers.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

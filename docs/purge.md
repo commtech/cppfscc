@@ -47,5 +47,5 @@ p.Purge(false, true);
 
 
 ### Additional Resources
-- Complete example: [`examples\purge.cpp`](https://github.com/commtech/cfscc/blob/master/examples/purge/purge.cpp)
-- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cfscc/blob/master/src/fscc.cpp)
+- Complete example: [`examples\purge.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/purge.cpp)
+- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

@@ -87,5 +87,5 @@ p.SetMemoryCap(memcap);
 
 
 ### Additional Resources
-- Complete example: [`examples\memory-cap.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/memory-cap/memory-cap.cpp)
+- Complete example: [`examples\memory-cap.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/memory-cap.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

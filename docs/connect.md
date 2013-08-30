@@ -36,5 +36,5 @@ FSCC::Port p(0);
 
 
 ### Additional Resources
-- Complete example: [`examples\tutorial.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/tutorial/tutorial.cpp)
+- Complete example: [`examples\tutorial.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/tutorial.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

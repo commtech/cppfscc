@@ -75,5 +75,5 @@ p.DisableAppendStatus()
 
 
 ### Additional Resources
-- Complete example: [`examples\append-status.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-status/append-status.cpp)
+- Complete example: [`examples\append-status.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-status.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

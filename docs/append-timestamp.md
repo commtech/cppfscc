@@ -67,5 +67,5 @@ p.DisableAppendStatus()
 
 
 ### Additional Resources
-- Complete example: [`examples\append-timestamp.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-timestamp/append-timestamp.cpp)
+- Complete example: [`examples\append-timestamp.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-timestamp.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

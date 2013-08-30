@@ -68,5 +68,5 @@ p.DisableIgnoreTimeout()
 
 
 ### Additional Resources
-- Complete example: [`examples\ignore-timeout.cpp`](https://github.com/commtech/cfscc/blob/master/examples/ignore-timeout/ignore-timeout.cpp)
-- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cfscc/blob/master/src/fscc.cpp)
+- Complete example: [`examples\ignore-timeout.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/ignore-timeout.cpp)
+- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

@@ -135,5 +135,5 @@ values.
 
 
 ### Additional Resources
-- Complete example: [`examples\registers.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/append-status/registers.cpp)
+- Complete example: [`examples\registers.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/registers.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

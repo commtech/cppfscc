@@ -41,5 +41,5 @@ p.SetClockFrequency(18432000);
 
 
 ### Additional Resources
-- Complete example: [`examples\clock-frequency.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/clock-frequency/clock-frequency.cpp)
+- Complete example: [`examples\clock-frequency.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/clock-frequency.cpp)
 - Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

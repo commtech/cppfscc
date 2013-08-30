@@ -105,5 +105,5 @@ fscc_read_with_timeout(h, idata, sizeof(idata), &bytes_read, 100);
 
 
 ### Additional Resources
-- Complete example: [`examples\tutorial.c`](https://github.com/commtech/cfscc/blob/master/examples/tutorial/tutorial.c)
-- Implemenation details: [`src\fscc.c`](https://github.com/commtech/cfscc/blob/master/src/fscc.c)
+- Complete example: [`examples\tutorial.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/tutorial.cpp)
+- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)

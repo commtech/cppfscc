@@ -67,5 +67,5 @@ p.DisableRxMultiple();
 
 
 ### Additional Resources
-- Complete example: [`examples\rx-multiple.cpp`](https://github.com/commtech/cfscc/blob/master/examples/rx-multiple/rx-multiple.cpp)
-- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cfscc/blob/master/src/fscc.cpp)
+- Complete example: [`examples\rx-multiple.cpp`](https://github.com/commtech/cppfscc/blob/master/examples/rx-multiple.cpp)
+- Implemenation details: [`src\fscc.cpp`](https://github.com/commtech/cppfscc/blob/master/src/fscc.cpp)
