@@ -9,12 +9,7 @@ namespace FSCC {
 /// <param name="port_num">Used to indicate status.</param>
 Port::Port(unsigned port_num)
 {
-	init(port_num, false);
-}
-
-Port::Port(unsigned port_num, bool overlapped)
-{
-	init(port_num, overlapped);
+	init(port_num, true);
 }
 
 Port::~Port(void)
@@ -82,43 +77,71 @@ Port& Port::operator=(const Port &other)
 	return *this;
 }
 
-unsigned Port::Write(const char *buf, unsigned size, OVERLAPPED *o)
+int Port::Write(const char *buf, unsigned size, OVERLAPPED *o)
 {
-        unsigned bytes_written;
+    unsigned bytes_written = 0;
 
-        int e = fscc_write(_h, (char *)buf, size, &bytes_written, o);
+    int e = fscc_write(_h, (char *)buf, size, &bytes_written, o);
 
-        if (e)
-                throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-        return bytes_written;
+    return e;
 }
 
 unsigned Port::Write(const char *buf, unsigned size) 
 {
-        return Write(buf, size, 0);
+    OVERLAPPED o;
+    DWORD bytes_written = 0;
+
+    memset(&o, 0, sizeof(o));
+
+    Write(buf, size, &o);
+
+    GetOverlappedResult(_h, &o, &bytes_written, true);
+
+    return bytes_written;
 }
 
 unsigned Port::Write(const std::string &s)
 {
-        return Write(s.c_str(), s.length());
+    return Write(s.c_str(), s.length());
 }
 
-unsigned Port::Read(char *buf, unsigned size, OVERLAPPED *o)
+int Port::Read(char *buf, unsigned size, OVERLAPPED *o)
 {
-        unsigned bytes_read;
+    unsigned bytes_read;
 
-        int e = fscc_read(_h, buf, size, &bytes_read, o);
+    int e = fscc_read(_h, buf, size, &bytes_read, o);
 
-        if (e)
-                throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-        return bytes_read;
+    return bytes_read;
 }
 
 unsigned Port::Read(char *buf, unsigned size)
 {
-        return Read(buf, size, (OVERLAPPED *)0);
+    OVERLAPPED o;
+    DWORD bytes_read = 0;
+
+    Read(buf, size, (OVERLAPPED *)0);
+
+    GetOverlappedResult(_h, &o, &bytes_read, true);
+
+    return bytes_read;
+}
+
+unsigned Port::Read(char *buf, unsigned size, unsigned timeout)
+{
+    unsigned bytes_read;
+
+    int e = fscc_read_with_timeout(_h, buf, size, &bytes_read, timeout);
+
+    if (e >= 1)
+        throw SystemException(e);
+
+    return bytes_read;
 }
 
 unsigned Port::GetTxModifiers(void) throw(SystemException)

@@ -15,7 +15,6 @@ namespace FSCC {
 	class __declspec(dllexport) Port {
 	public:
 		Port(unsigned port_num) throw(SystemException);
-		Port(unsigned port_num, bool overlapped) throw(SystemException);
 
 		Port(const Port &other) throw(SystemException); /* Untested */
 		Port& operator=(const Port &other) throw(SystemException); /* Untested */
@@ -43,11 +42,12 @@ namespace FSCC {
 		void DisableRxMultiple(void) throw(SystemException);
 		void Purge(bool tx, bool rx) throw(SystemException);
 
-		unsigned Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
+		int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 		unsigned Write(const char *buf, unsigned size) throw(SystemException);
 		unsigned Write(const std::string &s) throw(SystemException);
-		unsigned Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
+		int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 		unsigned Read(char *buf, unsigned size) throw(SystemException);
+		unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException);
 
 	protected:
 		void init(unsigned port_num, bool overlapped) throw(SystemException);
