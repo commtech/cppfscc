@@ -10,6 +10,7 @@
 
 namespace Fscc {
 
+    enum transmit_type { XF=0, XREP=1, TXT=2, TXEXT=4 };
 	struct Registers;
 
 	class __declspec(dllexport) Port {
