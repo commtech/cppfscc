@@ -83,7 +83,7 @@ int Port::Write(const char *buf, unsigned size, OVERLAPPED *o)
 
     int e = fscc_write(_h, (char *)buf, size, &bytes_written, o);
 
-    if (e)
+    if (e >= 1 && e != 997)
         throw SystemException(e);
 
     return e;
@@ -114,7 +114,7 @@ int Port::Read(char *buf, unsigned size, OVERLAPPED *o)
 
     int e = fscc_read(_h, buf, size, &bytes_read, o);
 
-    if (e)
+    if (e >= 1 && e != 997)
         throw SystemException(e);
 
     return bytes_read;
