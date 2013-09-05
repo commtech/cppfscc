@@ -51,7 +51,7 @@ void Port::cleanup(void)
 	int e = fscc_disconnect(_h);
 
 	if (e)
-			throw SystemException(e);
+		throw SystemException(e);
 } 
 
 Port::Port(const Port &other)
@@ -66,11 +66,11 @@ Port& Port::operator=(const Port &other)
 		int e = fscc_connect(other._port_num, other._overlapped, &h2);
 
 		if (e) {
-				throw SystemException(e);
+            throw SystemException(e);
 		}
 		else {
-				cleanup();
-				init(other._port_num, other._overlapped, h2);
+            cleanup();
+			init(other._port_num, other._overlapped, h2);
 		}
 	}
 
