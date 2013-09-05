@@ -8,7 +8,7 @@
 
 #include "sys_exception.hpp"
 
-namespace FSCC {
+namespace Fscc {
 
 	struct Registers;
 

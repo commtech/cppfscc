@@ -4,7 +4,7 @@
 
 #include "fscc.hpp"
 
-namespace FSCC {
+namespace Fscc {
 
 /// <param name="port_num">Used to indicate status.</param>
 Port::Port(unsigned port_num)
