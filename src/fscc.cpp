@@ -200,10 +200,8 @@ void Port::SetRegisters(const Registers &regs) throw(SystemException)
 		throw SystemException(e);
 }
 
-Registers Port::GetRegisters(void) throw(SystemException)
+Registers Port::GetRegisters(const Registers &regs) throw(SystemException)
 {
-	Registers regs;
-
 	int e = fscc_get_registers(_h, (struct fscc_registers *)&regs);
 
 	if (e)
@@ -342,29 +340,45 @@ void Port::Purge(bool tx, bool rx) throw(SystemException)
 
 Registers::Registers()
 {
-    FIFOT = FSCC_UPDATE_VALUE;
+    Reset();
+}
 
-    CMDR = FSCC_UPDATE_VALUE;
-    STAR = FSCC_UPDATE_VALUE; /* Read-only */
-    CCR0 = FSCC_UPDATE_VALUE;
-    CCR1 = FSCC_UPDATE_VALUE;
-    CCR2 = FSCC_UPDATE_VALUE;
-    BGR = FSCC_UPDATE_VALUE;
-    SSR = FSCC_UPDATE_VALUE;
-    SMR = FSCC_UPDATE_VALUE;
-    TSR = FSCC_UPDATE_VALUE;
-    TMR = FSCC_UPDATE_VALUE;
-    RAR = FSCC_UPDATE_VALUE;
-    RAMR = FSCC_UPDATE_VALUE;
-    PPR = FSCC_UPDATE_VALUE;
-    TCR = FSCC_UPDATE_VALUE;
-    VSTR = FSCC_UPDATE_VALUE;
+void Registers::Reset(void)
+{
+    FIFOT = -1;
 
-    IMR = FSCC_UPDATE_VALUE;
-    DPLLR = FSCC_UPDATE_VALUE;
+    CMDR = -1;
+    STAR = -1; /* Read-only */
+    CCR0 = -1;
+    CCR1 = -1;
+    CCR2 = -1;
+    BGR = -1;
+    SSR = -1;
+    SMR = -1;
+    TSR = -1;
+    TMR = -1;
+    RAR = -1;
+    RAMR = -1;
+    PPR = -1;
+    TCR = -1;
+    VSTR = -1;
+
+    IMR = -1;
+    DPLLR = -1;
 
     /* BAR 2 */
-    FCR = FSCC_UPDATE_VALUE;
+    FCR = -1;
+}
+
+MemoryCap::MemoryCap()
+{
+    Reset();
+}
+
+void MemoryCap::Reset(void)
+{
+    input = -1;
+    output = -1;
 }
 
 } /* namespace FSCC */
