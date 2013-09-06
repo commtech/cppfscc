@@ -66,6 +66,12 @@ int main(int argc, char *argv[])
 int init(Fscc::Port &p)
 {
 	Fscc::Registers r;
+	Fscc::MemoryCap m;
+
+    m.input = 1000000;
+    m.output = 1000000;
+
+    p.SetMemoryCap(m);
 
     p.DisableRxMultiple();
     p.DisableAppendStatus();
