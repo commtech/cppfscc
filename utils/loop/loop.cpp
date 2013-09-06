@@ -67,6 +67,7 @@ int init(Fscc::Port &p)
 {
 	Fscc::Registers r;
 
+    p.DisableRxMultiple();
     p.DisableAppendStatus();
     p.DisableAppendTimestamp();
     p.SetTxModifiers(Fscc::XF);
@@ -90,6 +91,7 @@ int init(Fscc::Port &p)
 	r.FCR = 0x00000000;
 
     p.SetRegisters(r);
+
     p.SetClockFrequency(1000000);
     
     p.Purge(true, true);
