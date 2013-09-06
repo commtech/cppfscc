@@ -12,6 +12,7 @@ namespace Fscc {
 
     enum transmit_type { XF=0, XREP=1, TXT=2, TXEXT=4 };
 	struct Registers;
+    struct MemoryCap;
 
 	class __declspec(dllexport) Port {
 	public:
@@ -24,8 +25,8 @@ namespace Fscc {
 
 		unsigned GetTxModifiers(void) throw(SystemException);
 		void SetTxModifiers(unsigned modifiers);
-		void SetMemoryCap(const struct fscc_memory_cap &memcap) throw(SystemException);
-		struct fscc_memory_cap GetMemoryCap(void) throw(SystemException);
+		void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
+		MemoryCap GetMemoryCap(void) throw(SystemException);
 		void SetRegisters(const Registers &regs) throw(SystemException);
 		Registers GetRegisters(void) throw(SystemException);
 		void SetClockFrequency(unsigned frequency) throw(SystemException);
@@ -97,6 +98,11 @@ namespace Fscc {
 		/* BAR 2 */
 		fscc_register FCR;
 	};
+
+    struct __declspec(dllexport) MemoryCap {
+        int input;
+        int output;
+    };
 
 } /* namespace FSCC */
 

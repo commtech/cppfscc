@@ -164,19 +164,23 @@ void Port::SetTxModifiers(unsigned modifiers)
 		throw SystemException(e);
 }
 
-void Port::SetMemoryCap(const struct fscc_memory_cap &memcap) throw(SystemException)
+void Port::SetMemoryCap(const MemoryCap &memcap) throw(SystemException)
 {
-	int e = fscc_set_memory_cap(_h, &memcap);
+	struct fscc_memory_cap m;
+
+	memcpy(&m, &memcap, sizeof(m));
+
+	int e = fscc_set_memory_cap(_h, &m);
 
 	if (e)
 		throw SystemException(e);
 }
 
-struct fscc_memory_cap Port::GetMemoryCap(void) throw(SystemException)
+MemoryCap Port::GetMemoryCap(void) throw(SystemException)
 {
-	struct fscc_memory_cap memcap;
+	struct MemoryCap memcap;
 
-	int e = fscc_get_memory_cap(_h, &memcap);
+	int e = fscc_get_memory_cap(_h, (struct fscc_memory_cap *)&memcap);
 
 	if (e)
 		throw SystemException(e);
