@@ -9,8 +9,10 @@
 #include "sys_exception.hpp"
 
 namespace Fscc {
+    namespace TxModifiers {
+        enum { XF=0, XREP=1, TXT=2, TXEXT=4 };
+    }
 
-    enum transmit_type { XF=0, XREP=1, TXT=2, TXEXT=4 };
 	struct Registers;
     struct MemoryCap;
     const int UPDATE_VALUE = -2;
