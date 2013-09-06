@@ -13,7 +13,7 @@ int main(void)
     
     r.Reset();
 
-	/* Mark the CCR0 and CCR1 elements to retrieve values */
+	/* Mark the CCR1 and CCR2 elements to retrieve values */
 	r.CCR1 = Fscc::UPDATE_VALUE;
 	r.CCR2 = Fscc::UPDATE_VALUE;
 

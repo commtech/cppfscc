@@ -39,7 +39,7 @@ void SetTxModifiers(unsigned modifiers) throw(SystemException);
 #include <fscc.hpp>
 ...
 
-p.SetTxModifiers(XF | XREP);
+p.SetTxModifiers(Fscc::XF | Fscc::XREP);
 ```
 
 

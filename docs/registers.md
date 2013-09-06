@@ -68,7 +68,7 @@ struct Registers {
 
 ## Set
 ```c++
-void SetRegisters(const Registers &regs) throw(SystemException);
+void SetRegisters(const Registers &r) throw(SystemException);
 ```
 
 ###### Examples
@@ -87,7 +87,7 @@ p.SetRegisters(r);
 
 ## Get
 ```c++
-Registers GetRegisters(const Registers &regs) throw(SystemException);
+Registers GetRegisters(const Registers &r) throw(SystemException);
 ```
 
 ###### Examples
@@ -95,15 +95,15 @@ Registers GetRegisters(const Registers &regs) throw(SystemException);
 #include <fscc.hpp>
 ...
 
-Registers regs;
+Registers r;
 
-regs.CCR0 = FSCC_UPDATE_VALUE;
-regs.BGR = FSCC_UPDATE_VALUE;
+r.CCR1 = FSCC_UPDATE_VALUE;
+r.CCR2 = FSCC_UPDATE_VALUE;
 
-regs = p.GetRegisters(r);
+r = p.GetRegisters(r);
 ```
 
-At this point `regs.CCR0` and `regs.BGR` would be set to their respective
+At this point `r.CCR1` and `r.CCR2` would be set to their respective
 values.
 
 

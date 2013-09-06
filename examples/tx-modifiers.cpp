@@ -1,24 +1,17 @@
-#include <stdlib.h> /* EXIT_SUCCESS */
-#include <fscc.h> /* fscc_connect, fscc_disconnect, fscc_handle
-                     TXT, XREP, XF, fscc_{get, set}_tx_modifiers */
+#include <cstdlib> /* EXIT_SUCCESS */
+#include <fscc.hpp> /* Fscc::Port */
 
 int main(void)
 {
-	fscc_handle h;
-	unsigned modifiers;
+	Fscc::Port p(0);
 
-	fscc_connect(0, 0, &h);
+	// Enable transmit repeat & transmit on timer */
+    p.SetTxModifiers(Fscc::TxModifiers::TXT | Fscc::TxModifiers::XREP);
 
-	/* Enable transmit repeat & transmit on timer */
-	fscc_set_tx_modifiers(h, TXT | XREP);
+	// Enable transmit repeat & transmit on timer */
+    p.SetTxModifiers(Fscc::TxModifiers::XF);
 
-	/* Revert to normal transmission */
-	fscc_set_tx_modifiers(h, XF);
-
-	/* Get current modifiers */
-	fscc_get_tx_modifiers(h, &modifiers);
-
-	fscc_disconnect(h);
+    unsigned modifiers = p.GetTxModifiers();
 
 	return EXIT_SUCCESS;
 }
