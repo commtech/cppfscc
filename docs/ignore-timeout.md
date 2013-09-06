@@ -5,6 +5,7 @@
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Get
@@ -23,11 +24,6 @@ bool status;
 status = p.GetIgnoreTimeout();
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Enable
 ```c++
@@ -42,11 +38,6 @@ void EnableIgnoreTimeout(void) throw(SystemException);
 p.EnableIgnoreTimeout()
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Disable
 ```c++
@@ -60,11 +51,6 @@ void DisableIgnoreTimeout(void) throw(SystemException);
 
 p.DisableIgnoreTimeout()
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

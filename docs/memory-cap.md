@@ -9,44 +9,27 @@ option for setting it's input and output memory cap.
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Structure
 ```c++
-struct fscc_memory_cap {
+struct MemoryCap {
     int input;
     int output;
 };
 ```
 
 
-## Macros
-```c++
-FSCC_MEMORY_CAP_INIT(memcap)
-```
-
-| Parameter   | Type                       | Description
-| ----------- | -------------------------- | --------------------------------------
-| `memcap`    | `struct fscc_memory_cap *` | The memory cap structure to initialize
-
-The `FSCC_MEMORY_CAP_INIT` macro should be called each time you use the 
-`struct fscc_memory_cap` structure. An initialized structure will allow you to 
-only set/receive the memory cap you need.
-
-
 ## Get
 ```c++
-struct fscc_memory_cap GetMemoryCap(void) throw(SystemException);
+MemoryCap GetMemoryCap(void) throw(SystemException);
 ```
 
 ###### Examples
 ```c++
 #include <fscc.hpp>
 ...
-
-struct fscc_memory_cap memcap;
-
-FSCC_MEMORY_CAP_INIT(memcap);
 
 memcap = p.GetMemoryCap();
 ```
@@ -54,15 +37,10 @@ memcap = p.GetMemoryCap();
 At this point `memcap.input` and `memcap.output` would be set to their respective
 values.
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Set
 ```c++
-void SetMemoryCap(const struct fscc_memory_cap &memcap) throw(SystemException);
+void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
 ```
 
 ###### Examples
@@ -70,20 +48,13 @@ void SetMemoryCap(const struct fscc_memory_cap &memcap) throw(SystemException);
 #include <fscc.hpp>
 ...
 
-struct fscc_memory_cap memcap;
+MemoryCap memcap;
 
-FSCC_MEMORY_CAP_INIT(memcap);
-
-memcap.input = 1000000; /* 1 MB */
-memcap.output = 2000000; /* 2 MB */
+memcap.input = 1000000; // 1 MB
+memcap.output = 2000000; // 2 MB
 
 p.SetMemoryCap(memcap);
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

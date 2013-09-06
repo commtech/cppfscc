@@ -5,6 +5,7 @@
 | -------------- | --------
 | `fscc-windows` | `v2.2.9` 
 | `fscc-linux`   | `v2.2.4` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Get
@@ -22,11 +23,6 @@ bool status;
 status = p.GetRxMultiple();
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Enable
 ```c++
@@ -41,11 +37,6 @@ void EnableRxMultiple(void) throw(SystemException);
 p.EnableRxMultiple();
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Disable
 ```c++
@@ -59,11 +50,6 @@ void DisableRxMultiple(void) throw(SystemException);
 
 p.DisableRxMultiple();
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

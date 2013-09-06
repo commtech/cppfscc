@@ -6,6 +6,7 @@
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Write
@@ -37,11 +38,6 @@ unsigned bytes_written;
 
 fscc_write(h, odata, sizeof(odata), &bytes_written, NULL);
 ```
-
-###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
 
 
 ### Additional Resources

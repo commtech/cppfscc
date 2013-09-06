@@ -5,6 +5,7 @@
 | -------------- | --------
 | `fscc-windows` | `v2.4.0` 
 | `fscc-linux`   | `v2.4.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Get
@@ -22,11 +23,6 @@ bool status;
 status = p.GetAppendStatus();
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Enable
 ```c++
@@ -41,11 +37,6 @@ void EnableAppendTimestamp(void) throw(SystemException);
 p.EnableAppendStatus()
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Disable
 ```c++
@@ -59,11 +50,6 @@ void EnableAppendTimestamp(void) throw(SystemException);
 
 p.DisableAppendStatus()
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

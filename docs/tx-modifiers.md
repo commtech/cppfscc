@@ -10,6 +10,8 @@
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
+
 
 ## Get
 ```c++
@@ -26,11 +28,6 @@ unsigned modifiers;
 modifiers = p.GetTxModifiers();
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Set
 ```c++
@@ -44,11 +41,6 @@ void SetTxModifiers(unsigned modifiers) throw(SystemException);
 
 p.SetTxModifiers(XF | XREP);
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

@@ -17,6 +17,7 @@ desired baud rate using the BGR register.
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Set
@@ -33,11 +34,6 @@ Set the port's clock frequency to 18.432 MHz.
 
 p.SetClockFrequency(18432000);
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

@@ -7,11 +7,12 @@ The FSCC reports this data to you by appending two additional bytes
 to each frame you read from the card, if you opt-in to see this data. There are
 a few methods of enabling this additional data.
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Get
@@ -29,11 +30,6 @@ bool status;
 status = p.GetAppendStatus();
 ```
 
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
-
 
 ## Enable
 ```c++
@@ -47,11 +43,6 @@ void EnableAppendStatus(void) throw(SystemException);
 
 p.EnableAppendStatus()
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ## Disable
@@ -67,11 +58,6 @@ void DisableAppendStatus(void) throw(SystemException);
 
 p.DisableAppendStatus()
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

@@ -26,11 +26,12 @@ effect.
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Structure
 ```c++
-struct fscc_registers {
+struct Registers {
     /* BAR 0 */
     fscc_register reserved1[2];
 
@@ -65,20 +66,6 @@ struct fscc_registers {
 ```
 
 
-## Macros
-```c++
-FSCC_REGISTERS_INIT(regs)
-```
-
-| Parameter | Type                      | Description
-| --------- | ------------------------- | -----------------------
-| `regs`    | `struct fscc_registers *` | The registers structure to initialize
-
-The `FSCC_REGISTERS_INIT` macro should be called each time you use the 
-`struct fscc_registers` structure. An initialized structure will allow you to 
-only set/receive the registers you need.
-
-
 ## Set
 ```c++
 void SetRegisters(const Registers &regs) throw(SystemException);
@@ -89,25 +76,18 @@ void SetRegisters(const Registers &regs) throw(SystemException);
 #include <fscc.hpp>
 ...
 
-struct fscc_registers registers;
+Fscc::Registers r;
 
-FSCC_REGISTERS_INIT(registers);
+r.CCR0 = 0x0011201c;
+r.BGR = 10;
 
-registers.CCR0 = 0x0011201c;
-registers.BGR = 10;
-
-p.SetRegisters(registers);
+p.SetRegisters(r);
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ## Get
 ```c++
-Registers GetRegisters(void) throw(SystemException);
+Registers GetRegisters(const Registers &regs) throw(SystemException);
 ```
 
 ###### Examples
@@ -115,23 +95,16 @@ Registers GetRegisters(void) throw(SystemException);
 #include <fscc.hpp>
 ...
 
-struct fscc_registers registers;
+Registers regs;
 
-FSCC_REGISTERS_INIT(registers);
+regs.CCR0 = FSCC_UPDATE_VALUE;
+regs.BGR = FSCC_UPDATE_VALUE;
 
-registers.CCR0 = FSCC_UPDATE_VALUE;
-registers.BGR = FSCC_UPDATE_VALUE;
-
-registers = p.GetRegisters();
+regs = p.GetRegisters(r);
 ```
 
 At this point `regs.CCR0` and `regs.BGR` would be set to their respective
 values.
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

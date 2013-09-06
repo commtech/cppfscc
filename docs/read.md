@@ -32,6 +32,7 @@ bug developers introduce while trying to cancel I/O operations when using OVERLA
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Read
@@ -63,11 +64,6 @@ unsigned bytes_read;
 fscc_read(h, idata, sizeof(idata), &bytes_read, NULL);
 ```
 
-###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
-
 
 ## Read (Timeout)
 ```c
@@ -97,11 +93,6 @@ unsigned bytes_read;
 
 fscc_read_with_timeout(h, idata, sizeof(idata), &bytes_read, 100);
 ```
-
-###### Support
-| Code           | Version
-| -------------- | --------
-| `cfscc`        | `v1.0.0`
 
 
 ### Additional Resources

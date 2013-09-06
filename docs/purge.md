@@ -8,6 +8,7 @@ there are a couple of methods you can use.
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Execute
@@ -39,11 +40,6 @@ Purge only the receive data.
 
 p.Purge(false, true);
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources

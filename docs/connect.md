@@ -9,6 +9,7 @@ if you would like to use the asynchronous functionality.
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
 | `fscc-linux`   | `v2.0.0` 
+| `cppfscc`      | `v1.0.0`
 
 
 ## Connect
@@ -28,11 +29,6 @@ Connect to port 0.
 
 FSCC::Port p(0);
 ```
-
-###### Support
-| Code      | Version
-| --------- | --------
-| `cppfscc` | `v1.0.0`
 
 
 ### Additional Resources
