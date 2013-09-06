@@ -1,20 +1,14 @@
-#include <stdlib.h> /* EXIT_SUCCESS */
-#include <fscc.h> /* fscc_connect, fscc_disconnect, fscc_handle
-                     fscc_{get, enable, disable}_ignore_timeout */
+#include <cstdlib> /* EXIT_SUCCESS */
+#include <fscc.hpp> /* Fscc::Port */
 
 int main(void)
 {
-	fscc_handle h;
-	unsigned status;
+	Fscc::Port p(0);
 
-	fscc_connect(0, 0, &h);
-
-	fscc_get_ignore_timeout(h, &status);
-
-	fscc_enable_ignore_timeout(h);
-	fscc_disable_ignore_timeout(h);
-
-	fscc_disconnect(h);
+    bool status = p.GetIgnoreTimeout();
+    
+	p.EnableIgnoreTimeout();
+	p.DisableIgnoreTimeout();
 
 	return EXIT_SUCCESS;
 }
