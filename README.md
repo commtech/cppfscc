@@ -76,8 +76,8 @@ own program. All of these options are described on their respective documentatio
 - [Purge](https://github.com/commtech/cppfscc/blob/master/docs/purge.md)
 - [Registers](https://github.com/commtech/cppfscc/blob/master/docs/registers.md)
 - [TX Modifiers](https://github.com/commtech/cppfscc/blob/master/docs/tx-modifiers.md)
-- [Write](https://github.com/commtech/cppfscc/blob/master/docs/sync-write.md)
-- [Read](https://github.com/commtech/cppfscc/blob/master/docs/sync-read.md)
+- [Write](https://github.com/commtech/cppfscc/blob/master/docs/write.md)
+- [Read](https://github.com/commtech/cppfscc/blob/master/docs/read.md)
 - [Disconnect](https://github.com/commtech/cppfscc/blob/master/docs/disconnect.md)
 
 
