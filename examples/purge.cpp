@@ -1,18 +1,17 @@
-#include <cstdlib> /* EXIT_SUCCESS */
-#include <fscc.hpp> /* Fscc::Port */
+#include <fscc.hpp> // Fscc::Port
 
 int main(void)
 {
-	Fscc::Port p(0);
+    Fscc::Port p(0);
 
-	/* Purge TX */
-	p.Purge(true, false);
+    // TX
+    p.Purge(true, false);
 
-	/* Purge RX */
-	p.Purge(false, true);
+    // RX
+    p.Purge(false, true);
 
-	/* Purge both TX & RX */
-	p.Purge(true, true);
+    // TX & RX
+    p.Purge(true, true);
 
-	return EXIT_SUCCESS;
+    return 0;
 }

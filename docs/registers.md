@@ -21,7 +21,7 @@ You should purge the data stream after changing the registers.
 Settings like CCR0 will require being purged for the changes to take 
 effect.
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
@@ -66,41 +66,58 @@ struct Registers {
 ```
 
 
+## Helpers
+```c
+void Reset(void);
+```
+
+The `Reset()` helper function should be called any time you want to reuse a
+`Registers` structure. It will reset the structure to it's initial state.
+
+
 ## Set
 ```c++
-void SetRegisters(const Registers &r) throw(SystemException);
+void SetRegisters(const Registers &regs) throw(SystemException);
 ```
+
+| Parameter | Type        | Description
+| ----------| ----------- | ---------------------------
+| `regs`    | `Registers` | The registers values to set
 
 ###### Examples
 ```c++
 #include <fscc.hpp>
 ...
 
-Fscc::Registers r;
+Fscc::Registers regs;
 
-r.CCR0 = 0x0011201c;
-r.BGR = 10;
+regs.CCR0 = 0x0011201c;
+regs.BGR = 10;
 
-p.SetRegisters(r);
+p.SetRegisters(regs);
 ```
 
 
 ## Get
 ```c++
-Registers GetRegisters(const Registers &r) throw(SystemException);
+Registers GetRegisters(const Registers &regs) throw(SystemException);
 ```
+
+| Parameter | Type        | Description
+| ----------| ----------- | ---------------------------------------------------------------
+| `regs`    | `Registers` | The registers structure with which registers marked to retrieve
 
 ###### Examples
 ```c++
 #include <fscc.hpp>
 ...
 
-Registers r;
+Registers regs;
 
-r.CCR1 = FSCC_UPDATE_VALUE;
-r.CCR2 = FSCC_UPDATE_VALUE;
+regs.CCR1 = FSCC_UPDATE_VALUE;
+regs.CCR2 = FSCC_UPDATE_VALUE;
 
-r = p.GetRegisters(r);
+regs = p.GetRegisters(regs);
 ```
 
 At this point `r.CCR1` and `r.CCR2` would be set to their respective

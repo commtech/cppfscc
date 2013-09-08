@@ -12,7 +12,7 @@ the frequency generator to finish. If you run into this situation we
 recommend using a larger frequency and then dividing it down to your 
 desired baud rate using the BGR register.
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
@@ -24,6 +24,10 @@ desired baud rate using the BGR register.
 ```c++
 void SetClockFrequency(unsigned frequency) throw(SystemException);
 ```
+
+| Parameter    | Type       | Description
+| ------------ | ---------- | ----------------------------
+| `frequency`  | `unsigned` | The new clock frequency (hz)
 
 
 ###### Examples

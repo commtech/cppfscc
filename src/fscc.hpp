@@ -1,3 +1,23 @@
+/*
+    Copyright (C) 2013 Commtech, Inc.
+
+    This file is part of cppfscc.
+
+    cppfscc is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    cppfscc is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with cppfscc.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
 #ifndef FSCC_HPP
 #define FSCC_HPP
 
@@ -13,98 +33,98 @@ namespace Fscc {
         enum { XF=0, XREP=1, TXT=2, TXEXT=4 };
     }
 
-	struct Registers;
+    struct Registers;
     struct MemoryCap;
     const int UPDATE_VALUE = -2;
 
-	class __declspec(dllexport) Port {
-	public:
-		Port(unsigned port_num) throw(SystemException);
+    class __declspec(dllexport) Port {
+    public:
+        Port(unsigned port_num) throw(SystemException);
 
-		Port(const Port &other) throw(SystemException); /* Untested */
-		Port& operator=(const Port &other) throw(SystemException); /* Untested */
+        Port(const Port &other) throw(SystemException); /* Untested */
+        Port& operator=(const Port &other) throw(SystemException); /* Untested */
 
-		virtual ~Port(void) throw(SystemException);
+        virtual ~Port(void) throw(SystemException);
 
-		unsigned GetTxModifiers(void) throw(SystemException);
-		void SetTxModifiers(unsigned modifiers);
-		void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
-		MemoryCap GetMemoryCap(void) throw(SystemException);
-		void SetRegisters(const Registers &regs) throw(SystemException);
-		Registers GetRegisters(const Registers &regs) throw(SystemException);
-		void SetClockFrequency(unsigned frequency) throw(SystemException);
-		bool GetAppendStatus(void) throw(SystemException);
-		void EnableAppendStatus(void) throw(SystemException);
-		void DisableAppendStatus(void) throw(SystemException);
-		bool GetAppendTimestamp(void) throw(SystemException);
-		void EnableAppendTimestamp(void) throw(SystemException);
-		void DisableAppendTimestamp(void) throw(SystemException);
-		bool GetIgnoreTimeout(void) throw(SystemException);
-		void EnableIgnoreTimeout(void) throw(SystemException);
-		void DisableIgnoreTimeout(void) throw(SystemException);
-		bool GetRxMultiple(void) throw(SystemException);
-		void EnableRxMultiple(void) throw(SystemException);
-		void DisableRxMultiple(void) throw(SystemException);
-		void Purge(bool tx, bool rx) throw(SystemException);
+        unsigned GetTxModifiers(void) throw(SystemException);
+        void SetTxModifiers(unsigned modifiers);
+        void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
+        MemoryCap GetMemoryCap(void) throw(SystemException);
+        void SetRegisters(const Registers &regs) throw(SystemException);
+        Registers GetRegisters(const Registers &regs) throw(SystemException);
+        void SetClockFrequency(unsigned frequency) throw(SystemException);
+        bool GetAppendStatus(void) throw(SystemException);
+        void EnableAppendStatus(void) throw(SystemException);
+        void DisableAppendStatus(void) throw(SystemException);
+        bool GetAppendTimestamp(void) throw(SystemException);
+        void EnableAppendTimestamp(void) throw(SystemException);
+        void DisableAppendTimestamp(void) throw(SystemException);
+        bool GetIgnoreTimeout(void) throw(SystemException);
+        void EnableIgnoreTimeout(void) throw(SystemException);
+        void DisableIgnoreTimeout(void) throw(SystemException);
+        bool GetRxMultiple(void) throw(SystemException);
+        void EnableRxMultiple(void) throw(SystemException);
+        void DisableRxMultiple(void) throw(SystemException);
+        void Purge(bool tx=true, bool rx=false) throw(SystemException);
 
-		int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
-		unsigned Write(const char *buf, unsigned size) throw(SystemException);
-		unsigned Write(const std::string &s) throw(SystemException);
-		int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
-		unsigned Read(char *buf, unsigned size) throw(SystemException);
-		unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException);
+        int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
+        unsigned Write(const char *buf, unsigned size) throw(SystemException);
+        unsigned Write(const std::string &s) throw(SystemException);
+        int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
+        unsigned Read(char *buf, unsigned size) throw(SystemException);
+        unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException);
 
-	protected:
-		void init(unsigned port_num, bool overlapped) throw(SystemException);
-		void init(unsigned port_num, bool overlapped, HANDLE h) throw();
-		void cleanup(void) throw(SystemException);
+    protected:
+        void init(unsigned port_num, bool overlapped) throw(SystemException);
+        void init(unsigned port_num, bool overlapped, HANDLE h) throw();
+        void cleanup(void) throw(SystemException);
 
-	private:
-		HANDLE _h;
-		unsigned _port_num;
-		bool _overlapped;
-	};
-		
-	typedef INT64 fscc_register;
+    private:
+        HANDLE _h;
+        unsigned _port_num;
+        bool _overlapped;
+    };
+        
+    typedef INT64 fscc_register;
 
-	struct __declspec(dllexport) Registers {
-		Registers(void);
+    struct __declspec(dllexport) Registers {
+        Registers(void);
         void Reset(void);
 
-		/* BAR 0 */
-		fscc_register __reserved1[2];
-	
-		fscc_register FIFOT;
-	
-		fscc_register __reserved2[2];
-	
-		fscc_register CMDR;
-		fscc_register STAR; /* Read-only */
-		fscc_register CCR0;
-		fscc_register CCR1;
-		fscc_register CCR2;
-		fscc_register BGR;
-		fscc_register SSR;
-		fscc_register SMR;
-		fscc_register TSR;
-		fscc_register TMR;
-		fscc_register RAR;
-		fscc_register RAMR;
-		fscc_register PPR;
-		fscc_register TCR;
-		fscc_register VSTR; /* Read-only */
-	
-		fscc_register __reserved4[1];
-	
-		fscc_register IMR;
-		fscc_register DPLLR;
+        /* BAR 0 */
+        fscc_register __reserved1[2];
+    
+        fscc_register FIFOT;
+    
+        fscc_register __reserved2[2];
+    
+        fscc_register CMDR;
+        fscc_register STAR; /* Read-only */
+        fscc_register CCR0;
+        fscc_register CCR1;
+        fscc_register CCR2;
+        fscc_register BGR;
+        fscc_register SSR;
+        fscc_register SMR;
+        fscc_register TSR;
+        fscc_register TMR;
+        fscc_register RAR;
+        fscc_register RAMR;
+        fscc_register PPR;
+        fscc_register TCR;
+        fscc_register VSTR; /* Read-only */
+    
+        fscc_register __reserved4[1];
+    
+        fscc_register IMR;
+        fscc_register DPLLR;
 
-		/* BAR 2 */
-		fscc_register FCR;
-	};
+        /* BAR 2 */
+        fscc_register FCR;
+    };
 
     struct __declspec(dllexport) MemoryCap {
-		MemoryCap(void);
+        MemoryCap(void);
         void Reset(void);
         
         int input;

@@ -5,7 +5,7 @@
 - TXT - Transmit on timer
 - TXEXT - Transmit on external signal
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
@@ -33,6 +33,10 @@ modifiers = p.GetTxModifiers();
 ```c++
 void SetTxModifiers(unsigned modifiers) throw(SystemException);
 ```
+
+| Parameter   | Type           | Description
+| ------------| -------------- | ----------------------------
+| `modifiers` | `unsigned int` | The modifiers values to set
 
 ###### Examples
 ```c++

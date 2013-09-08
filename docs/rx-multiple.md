@@ -1,6 +1,6 @@
 # RX Multiple
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.2.9` 

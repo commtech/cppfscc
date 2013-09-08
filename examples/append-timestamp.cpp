@@ -1,5 +1,4 @@
-#include <cstdlib> /* EXIT_SUCCESS */
-#include <fscc.hpp> /* Fscc::Port */
+#include <fscc.hpp> // Fscc::Port
 
 int main(void)
 {
@@ -7,8 +6,8 @@ int main(void)
 
     bool status = p.GetAppendTimestamp();
     
-	p.EnableAppendTimestamp();
+    p.EnableAppendTimestamp();
 	p.DisableAppendTimestamp();
 
-	return EXIT_SUCCESS;
+	return 0;
 }

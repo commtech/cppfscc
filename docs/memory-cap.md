@@ -4,7 +4,7 @@ prevent spurious incoming data from overrunning your system. Each port has an
 option for setting it's input and output memory cap.
 
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
@@ -19,6 +19,15 @@ struct MemoryCap {
     int output;
 };
 ```
+
+
+## Helpers
+```c
+void Reset(void);
+```
+
+The `Reset()` helper function should be called any time you want to reuse a
+`MemoryCap` structure. It will reset the structure to it's initial state.
 
 
 ## Get
@@ -42,6 +51,10 @@ values.
 ```c++
 void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
 ```
+
+| Parameter | Type        | Description
+| ----------| ----------- | ----------------------------
+| `memcap`  | `MemoryCap` | The memory cap values to set
 
 ###### Examples
 ```c++

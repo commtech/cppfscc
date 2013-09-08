@@ -1,3 +1,23 @@
+/*
+    Copyright (C) 2013 Commtech, Inc.
+
+    This file is part of cppfscc.
+
+    cppfscc is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    cppfscc is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with cppfscc.  If not, see <http://www.gnu.org/licenses/>.
+
+*/
+
 #include <cstdio>
 
 #include <fscc.h>
@@ -9,72 +29,72 @@ namespace Fscc {
 /// <param name="port_num">Used to indicate status.</param>
 Port::Port(unsigned port_num)
 {
-	init(port_num, true);
+    init(port_num, true);
 }
 
 Port::~Port(void)
 {
-	cleanup();
+    cleanup();
 }
 
 void Port::init(unsigned port_num, bool overlapped, HANDLE h)
 {
-	_port_num = port_num;
-	_overlapped = overlapped;
-	_h = h;
+    _port_num = port_num;
+    _overlapped = overlapped;
+    _h = h;
 } 
 
 void Port::init(unsigned port_num, bool overlapped)
 {
-	_port_num = port_num;
-	_overlapped = overlapped;
+    _port_num = port_num;
+    _overlapped = overlapped;
 
-	int e = fscc_connect(port_num, overlapped, &_h);
+    int e = fscc_connect(port_num, overlapped, &_h);
 
-	switch (e) {
-	case ERROR_SUCCESS:
-		break;
+    switch (e) {
+    case ERROR_SUCCESS:
+        break;
 
-	case ERROR_FILE_NOT_FOUND:
-		throw PortNotFoundException(port_num);
+    case ERROR_FILE_NOT_FOUND:
+        throw PortNotFoundException(port_num);
 
-	case ERROR_ACCESS_DENIED:
-		throw InsufficientPermissionsException();
+    case ERROR_ACCESS_DENIED:
+        throw InsufficientPermissionsException();
 
-	default:
-		throw SystemException(e);
-	}
+    default:
+        throw SystemException(e);
+    }
 } 
 
 void Port::cleanup(void)
 {
-	int e = fscc_disconnect(_h);
+    int e = fscc_disconnect(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 } 
 
 Port::Port(const Port &other)
 {
-	init(other._port_num, other._overlapped);
+    init(other._port_num, other._overlapped);
 }
 
 Port& Port::operator=(const Port &other)
 {
-	if (this != &other) {
-		HANDLE h2;
-		int e = fscc_connect(other._port_num, other._overlapped, &h2);
+    if (this != &other) {
+        HANDLE h2;
+        int e = fscc_connect(other._port_num, other._overlapped, &h2);
 
-		if (e) {
+        if (e) {
             throw SystemException(e);
-		}
-		else {
+        }
+        else {
             cleanup();
-			init(other._port_num, other._overlapped, h2);
-		}
-	}
+            init(other._port_num, other._overlapped, h2);
+        }
+    }
 
-	return *this;
+    return *this;
 }
 
 int Port::Write(const char *buf, unsigned size, OVERLAPPED *o)
@@ -146,196 +166,196 @@ unsigned Port::Read(char *buf, unsigned size, unsigned timeout)
 
 unsigned Port::GetTxModifiers(void) throw(SystemException)
 {
-	unsigned modifiers;
+    unsigned modifiers;
 
-	int e = fscc_get_tx_modifiers(_h, &modifiers);
+    int e = fscc_get_tx_modifiers(_h, &modifiers);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return modifiers;
+    return modifiers;
 }
 
 void Port::SetTxModifiers(unsigned modifiers)
 {
-	int e = fscc_set_tx_modifiers(_h, modifiers);
+    int e = fscc_set_tx_modifiers(_h, modifiers);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 void Port::SetMemoryCap(const MemoryCap &memcap) throw(SystemException)
 {
-	struct fscc_memory_cap m;
+    struct fscc_memory_cap m;
 
-	memcpy(&m, &memcap, sizeof(m));
+    memcpy(&m, &memcap, sizeof(m));
 
-	int e = fscc_set_memory_cap(_h, &m);
+    int e = fscc_set_memory_cap(_h, &m);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 MemoryCap Port::GetMemoryCap(void) throw(SystemException)
 {
-	struct MemoryCap memcap;
+    struct MemoryCap memcap;
 
-	int e = fscc_get_memory_cap(_h, (struct fscc_memory_cap *)&memcap);
+    int e = fscc_get_memory_cap(_h, (struct fscc_memory_cap *)&memcap);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return memcap;
+    return memcap;
 }
 
 void Port::SetRegisters(const Registers &regs) throw(SystemException)
 {
-	struct fscc_registers r;
+    struct fscc_registers r;
 
-	memcpy(&r, &regs, sizeof(r));
+    memcpy(&r, &regs, sizeof(r));
 
-	int e = fscc_set_registers(_h, &r);
+    int e = fscc_set_registers(_h, &r);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 Registers Port::GetRegisters(const Registers &regs) throw(SystemException)
 {
-	int e = fscc_get_registers(_h, (struct fscc_registers *)&regs);
+    int e = fscc_get_registers(_h, (struct fscc_registers *)&regs);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return regs;
+    return regs;
 }
 
 void Port::SetClockFrequency(unsigned frequency) throw(SystemException)
 {
-	int e = fscc_set_clock_frequency(_h, frequency);
+    int e = fscc_set_clock_frequency(_h, frequency);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 bool Port::GetAppendStatus(void) throw(SystemException)
 {
-	unsigned status;
+    unsigned status;
 
-	int e = fscc_get_append_status(_h, &status);
+    int e = fscc_get_append_status(_h, &status);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return status != 0;
+    return status != 0;
 }
 
 void Port::EnableAppendStatus(void) throw(SystemException)
 {
-	int e = fscc_enable_append_status(_h);
+    int e = fscc_enable_append_status(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 void Port::DisableAppendStatus(void) throw(SystemException)
 {
-	int e = fscc_disable_append_status(_h);
+    int e = fscc_disable_append_status(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 bool Port::GetAppendTimestamp(void) throw(SystemException)
 {
-	unsigned status;
+    unsigned status;
 
-	int e = fscc_get_append_timestamp(_h, &status);
+    int e = fscc_get_append_timestamp(_h, &status);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return status != 0;
+    return status != 0;
 }
 
 void Port::EnableAppendTimestamp(void) throw(SystemException)
 {
-	int e = fscc_enable_append_timestamp(_h);
+    int e = fscc_enable_append_timestamp(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 void Port::DisableAppendTimestamp(void) throw(SystemException)
 {
-	int e = fscc_disable_append_timestamp(_h);
+    int e = fscc_disable_append_timestamp(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 bool Port::GetIgnoreTimeout(void) throw(SystemException)
 {
-	unsigned status;
+    unsigned status;
 
-	int e = fscc_get_ignore_timeout(_h, &status);
+    int e = fscc_get_ignore_timeout(_h, &status);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return status != 0;
+    return status != 0;
 }
 
 void Port::EnableIgnoreTimeout(void) throw(SystemException)
 {
-	int e = fscc_enable_ignore_timeout(_h);
+    int e = fscc_enable_ignore_timeout(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 void Port::DisableIgnoreTimeout(void) throw(SystemException)
 {
-	int e = fscc_disable_ignore_timeout(_h);
+    int e = fscc_disable_ignore_timeout(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 bool Port::GetRxMultiple(void) throw(SystemException)
 {
-	unsigned status;
+    unsigned status;
 
-	int e = fscc_get_rx_multiple(_h, &status);
+    int e = fscc_get_rx_multiple(_h, &status);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 
-	return status != 0;
+    return status != 0;
 }
 
 void Port::EnableRxMultiple(void) throw(SystemException)
 {
-	int e = fscc_enable_rx_multiple(_h);
+    int e = fscc_enable_rx_multiple(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 void Port::DisableRxMultiple(void) throw(SystemException)
 {
-	int e = fscc_disable_rx_multiple(_h);
+    int e = fscc_disable_rx_multiple(_h);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 void Port::Purge(bool tx, bool rx) throw(SystemException)
 {
-	int e = fscc_purge(_h, tx, rx);
+    int e = fscc_purge(_h, tx, rx);
 
-	if (e)
-		throw SystemException(e);
+    if (e)
+        throw SystemException(e);
 }
 
 Registers::Registers()

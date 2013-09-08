@@ -3,7 +3,7 @@ Between the hardware FIFO and the driver's software buffers there are multiple p
 be stored, excluding your application code. If you ever need to clear this data and start fresh, 
 there are a couple of methods you can use.
 
-###### Driver Support
+###### Support
 | Code           | Version
 | -------------- | --------
 | `fscc-windows` | `v2.0.0` 
@@ -13,8 +13,13 @@ there are a couple of methods you can use.
 
 ## Execute
 ```c++
-void Purge(bool tx, bool rx) throw(SystemException);
+void Purge(bool tx=true, bool rx=true) throw(SystemException);
 ```
+
+| Parameter | Type   | Default | Description
+| --------- | ------ | ------- | ----------------------------------
+| `tx`      | `bool` | true    | Whether to purge the transmit data
+| `rx`      | `bool` | true    | Whether to purge the receive data
 
 ###### Examples
 Purge both the transmit and receive data.
