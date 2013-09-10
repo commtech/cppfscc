@@ -123,9 +123,9 @@ unsigned Port::Write(const char *buf, unsigned size)
     return bytes_written;
 }
 
-unsigned Port::Write(const std::string &s)
+unsigned Port::Write(const std::string &str)
 {
-    return Write(s.c_str(), s.length());
+    return Write(str.c_str(), str.length());
 }
 
 int Port::Read(char *buf, unsigned size, OVERLAPPED *o)
@@ -145,7 +145,9 @@ unsigned Port::Read(char *buf, unsigned size)
     OVERLAPPED o;
     DWORD bytes_read = 0;
 
-    Read(buf, size, (OVERLAPPED *)0);
+    memset(&o, 0, sizeof(o));
+
+    Read(buf, size, &o);
 
     GetOverlappedResult(_h, &o, &bytes_read, true);
 
@@ -162,6 +164,42 @@ unsigned Port::Read(char *buf, unsigned size, unsigned timeout)
         throw SystemException(e);
 
     return bytes_read;
+}
+
+std::string Port::Read(unsigned size) throw(SystemException)
+{
+    char *buf = new char[size]();
+    std::string str;
+
+    try {
+        Read(buf, size);
+    }
+    catch (SystemException &e) {
+        delete buf;
+        throw e;
+    }
+
+    str.assign(buf);
+    delete buf;
+    return str;
+}
+
+std::string Port::Read(unsigned size, unsigned timeout) throw(SystemException)
+{
+    char *buf = new char[size]();
+    std::string str;
+
+    try {
+        Read(buf, size, timeout);
+    }
+    catch (SystemException &e) {
+        delete buf;
+        throw e;
+    }
+
+    str.assign(buf);
+    delete buf;
+    return str;
 }
 
 unsigned Port::GetTxModifiers(void) throw(SystemException)

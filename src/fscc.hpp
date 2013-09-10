@@ -69,10 +69,12 @@ namespace Fscc {
 
         int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
         unsigned Write(const char *buf, unsigned size) throw(SystemException);
-        unsigned Write(const std::string &s) throw(SystemException);
+        unsigned Write(const std::string &str) throw(SystemException);
         int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
         unsigned Read(char *buf, unsigned size) throw(SystemException);
         unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException);
+        std::string Read(unsigned count=4096) throw(SystemException);
+        std::string Read(unsigned count, unsigned timeout) throw(SystemException);
 
     protected:
         void init(unsigned port_num, bool overlapped) throw(SystemException);
