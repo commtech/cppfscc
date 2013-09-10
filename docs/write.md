@@ -10,33 +10,74 @@
 
 
 ## Write
-```c
-int fscc_write(fscc_handle h, char *buf, unsigned size, unsigned *bytes_written, OVERLAPPED *o)
+```c++
+int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 ```
 
 | Parameter    | Type             | Description
 | ------------ | ---------------- | -----------------------
-| `h`          | `fscc_handle`    | The handle to your port
-| `buf`        | `char *`         | The data buffer to transmit
+| `buf`        | `const char *`   | The data buffer to transmit
 | `size`       | `unsigned`       | The number of bytes to transmit
-| `bytes_read` | `unsigned *`     | How many bytes were written to the read
 | `o`          | `OVERLAPPED *`   | [Overlapped IO structure](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686358.aspx)
 
-| Return Value            | Cause
-| ----------------------- | ------------------------------------------------------------------
-| 0                       | Success
-| `FSCC_BUFFER_TOO_SMALL` | The write size exceeds the output memory usage cap
-| `FSCC_TIMEOUT`          | You are executing a command that requires a transmit clock present
 
 ###### Examples
-```c
-#include <fscc.h>
+```c++
+#include <fscc.hpp>
 ...
 
 char odata[] = "Hello world!";
-unsigned bytes_written;
 
-fscc_write(h, odata, sizeof(odata), &bytes_written, NULL);
+p.Write(odata, sizeof(odata), o);
+```
+
+## Write
+```c++
+unsigned Write(const char *buf, unsigned size) throw(SystemException);
+```
+
+| Parameter    | Type             | Description
+| ------------ | ---------------- | -----------------------
+| `buf`        | `const char *`   | The data buffer to transmit
+| `size`       | `unsigned`       | The number of bytes to transmit
+
+| Return
+| ---------------------------
+| Number of bytes transmitted
+
+###### Examples
+```c++
+#include <fscc.hpp>
+...
+
+char odata[] = "Hello world!";
+unsigned bytes_written = 0;
+
+p.Write(odata, sizeof(odata));
+```
+
+## Write
+```c++
+unsigned Write(const std::string &str) throw(SystemException);
+```
+
+| Parameter | Type                | Description
+| --------- | ------------------- | -----------------------
+| `str`     | `const std::string` | The string to transmit
+
+| Return
+| ---------------------------
+| Number of bytes transmitted
+
+###### Examples
+```c++
+#include <fscc.hpp>
+...
+
+std::string odata("Hello world!");
+unsigned bytes_written = 0;
+
+bytes_written = p.Write(odata);
 ```
 
 

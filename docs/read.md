@@ -34,18 +34,16 @@ bug developers introduce while trying to cancel I/O operations when using OVERLA
 | `fscc-linux`   | `v2.0.0` 
 | `cppfscc`      | `v1.0.0`
 
-
-## Read
-```c
-int fscc_read(fscc_handle h, char *buf, unsigned size, unsigned *bytes_read, OVERLAPPED *o)
+        
+## Read (Overlapped)
+```c++
+int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 ```
 
 | Parameter    | Type             | Description
 | ------------ | ---------------- | -----------------------
-| `h`          | `fscc_handle`    | The handle to your port
 | `buf`        | `char *`         | The data buffer to hold incoming data
 | `size`       | `unsigned`       | The data buffer size
-| `bytes_read` | `unsigned *`     | How many bytes were returned from the read
 | `o`          | `OVERLAPPED *`   | [Overlapped IO structure](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686358.aspx)
 
 | Return Value            | Cause
@@ -54,44 +52,110 @@ int fscc_read(fscc_handle h, char *buf, unsigned size, unsigned *bytes_read, OVE
 | `FSCC_BUFFER_TOO_SMALL` | The read size is smaller than the next frame (in a frame based mode)
 
 ###### Examples
-```c
-#include <fscc.h>
+```c++
+#include <fscc.hpp>
 ...
 
 char idata[20] = {0};
 unsigned bytes_read;
 
-fscc_read(h, idata, sizeof(idata), &bytes_read, NULL);
+p.Read(idata, sizeof(idata), o);
 ```
 
-
-## Read (Timeout)
-```c
-int fscc_read_with_timeout(fscc_handle h, char *buf, unsigned size, unsigned *bytes_read, unsigned timeout)
+## Read (Blocking)
+```c++
+unsigned Read(char *buf, unsigned size) throw(SystemException);
 ```
 
 | Parameter    | Type             | Description
 | ------------ | ---------------- | -----------------------
-| `h`          | `fscc_handle`    | The handle to your port
 | `buf`        | `char *`         | The data buffer to hold incoming data
 | `size`       | `unsigned`       | The data buffer size
-| `bytes_read` | `unsigned *`     | How many bytes were returned from the read
-| `timeout`    | `unsigned`       | Number of milliseconds to wait for data before timing out
 
-| Return Value            | Cause
-| ----------------------- | ------------------------------------------------------------------
-| 0                       | Success
-| `FSCC_BUFFER_TOO_SMALL` | The read size is smaller than the next frame (in a frame based mode)
+| Return
+| ---------------------------
+| Number of bytes read
 
 ###### Examples
-```c
-#include <fscc.h>
+```c++
+#include <fscc.hpp>
 ...
 
 char idata[20] = {0};
 unsigned bytes_read;
 
-fscc_read_with_timeout(h, idata, sizeof(idata), &bytes_read, 100);
+bytes_read = p.Read(idata, sizeof(idata));
+```
+
+
+## Read (Timeout)
+```c++
+unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException);
+```
+
+| Parameter    | Type             | Description
+| ------------ | ---------------- | -----------------------
+| `buf`        | `char *`         | The data buffer to hold incoming data
+| `size`       | `unsigned`       | The data buffer size
+| `timeout`    | `unsigned`       | Number of milliseconds to wait for data
+
+| Return
+| ---------------------------
+| Number of bytes read
+
+###### Examples
+```c++
+#include <fscc.hpp>
+...
+
+char idata[20] = {0};
+unsigned bytes_read;
+
+bytes_read = p.Read(idata, sizeof(idata), 100);
+```
+
+
+## Read (Blocking)
+```c++
+public std::string Read(unsigned size=4096);
+```
+
+| Parameter    | Type           | Default | Description
+| ------------ | -------------- | ------- | -----------------------
+| `size`       | `unsigned int` | `4096`  | The max frame size
+
+| Return
+| ---------------------------
+| The latest frame
+
+###### Examples
+```c++
+#include <fscc.hpp>
+...
+
+std::string str = p.Read();
+```
+
+## Read (Timeout)
+```c#
+public string Read(unsigned size, unsigned timeout);
+```
+
+| Parameter    | Type           | Description
+| ------------ | -------------- | -----------------------
+| `size`       | `unsigned int` | The max frame size
+| `timeout`    | `unsigned int` | Number of milliseconds to wait for data
+
+| Return
+| ---------------------------
+| The latest frame
+
+###### Examples
+```c#
+#include <fscc.hpp>
+...
+
+std::string str = p.Read(4096, 100);
 ```
 
 
