@@ -120,7 +120,7 @@ regs.CCR2 = FSCC_UPDATE_VALUE;
 regs = p.GetRegisters(regs);
 ```
 
-At this point `r.CCR1` and `r.CCR2` would be set to their respective
+At this point `regs.CCR1` and `regs.CCR2` would be set to their respective
 values.
 
 
