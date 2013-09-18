@@ -73,7 +73,6 @@ own program. All of these options are described on their respective documentatio
 - [TX Modifiers](https://github.com/commtech/cppfscc/blob/master/docs/tx-modifiers.md)
 - [Write](https://github.com/commtech/cppfscc/blob/master/docs/write.md)
 - [Read](https://github.com/commtech/cppfscc/blob/master/docs/read.md)
-- [Disconnect](https://github.com/commtech/cppfscc/blob/master/docs/disconnect.md)
 
 
 ## Dependencies
