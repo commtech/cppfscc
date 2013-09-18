@@ -76,7 +76,7 @@ own program. All of these options are described on their respective documentatio
 
 
 ## Dependencies
-TODO
+- [FSCC C Library](https://github.com/commtech/cfscc/)
 
 
 ## API Compatibility
