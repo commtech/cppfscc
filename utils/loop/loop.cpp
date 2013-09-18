@@ -98,7 +98,7 @@ int init(Fscc::Port &p)
 
     p.SetRegisters(r);
 
-    p.SetClockFrequency(1000000);
+    p.SetClockFrequency(18432000);
     
     p.Purge(true, true);
 
