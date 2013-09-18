@@ -10,7 +10,7 @@
 
 ## Get
 ```c++
-bool GetAppendTimestamp(void) throw(SystemException);
+bool GetAppendTimestamp(void) throw();
 ```
 
 ###### Examples
@@ -26,7 +26,7 @@ status = p.GetAppendStatus();
 
 ## Enable
 ```c++
-void EnableAppendTimestamp(void) throw(SystemException);
+void EnableAppendTimestamp(void) throw();
 ```
 
 ###### Examples
@@ -40,7 +40,7 @@ p.EnableAppendStatus()
 
 ## Disable
 ```c++
-void EnableAppendTimestamp(void) throw(SystemException);
+void EnableAppendTimestamp(void) throw();
 ```
 
 ###### Examples

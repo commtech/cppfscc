@@ -44,27 +44,27 @@ namespace Fscc {
         Port(const Port &other) throw(SystemException); /* Untested */
         Port& operator=(const Port &other) throw(SystemException); /* Untested */
 
-        virtual ~Port(void) throw(SystemException);
+        virtual ~Port(void);
 
-        unsigned GetTxModifiers(void) throw(SystemException);
-        void SetTxModifiers(unsigned modifiers);
-        void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
-        MemoryCap GetMemoryCap(void) throw(SystemException);
+        unsigned GetTxModifiers(void) throw();
+        void SetTxModifiers(unsigned modifiers) throw();
+        void SetMemoryCap(const MemoryCap &memcap) throw();
+        MemoryCap GetMemoryCap(void) throw();
         void SetRegisters(const Registers &regs) throw(SystemException);
-        Registers GetRegisters(const Registers &regs) throw(SystemException);
-        void SetClockFrequency(unsigned frequency) throw(SystemException);
-        bool GetAppendStatus(void) throw(SystemException);
-        void EnableAppendStatus(void) throw(SystemException);
-        void DisableAppendStatus(void) throw(SystemException);
-        bool GetAppendTimestamp(void) throw(SystemException);
-        void EnableAppendTimestamp(void) throw(SystemException);
-        void DisableAppendTimestamp(void) throw(SystemException);
-        bool GetIgnoreTimeout(void) throw(SystemException);
-        void EnableIgnoreTimeout(void) throw(SystemException);
-        void DisableIgnoreTimeout(void) throw(SystemException);
-        bool GetRxMultiple(void) throw(SystemException);
-        void EnableRxMultiple(void) throw(SystemException);
-        void DisableRxMultiple(void) throw(SystemException);
+        Registers GetRegisters(const Registers &regs) throw();
+        void SetClockFrequency(unsigned frequency) throw();
+        bool GetAppendStatus(void) throw();
+        void EnableAppendStatus(void) throw();
+        void DisableAppendStatus(void) throw();
+        bool GetAppendTimestamp(void) throw();
+        void EnableAppendTimestamp(void) throw();
+        void DisableAppendTimestamp(void) throw();
+        bool GetIgnoreTimeout(void) throw();
+        void EnableIgnoreTimeout(void) throw();
+        void DisableIgnoreTimeout(void) throw();
+        bool GetRxMultiple(void) throw();
+        void EnableRxMultiple(void) throw();
+        void DisableRxMultiple(void) throw();
         void Purge(bool tx=true, bool rx=false) throw(SystemException);
 
         int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
@@ -79,7 +79,7 @@ namespace Fscc {
     protected:
         void init(unsigned port_num, bool overlapped) throw(SystemException);
         void init(unsigned port_num, bool overlapped, HANDLE h) throw();
-        void cleanup(void) throw(SystemException);
+        void cleanup(void) throw();
 
     private:
         HANDLE _h;
@@ -133,6 +133,6 @@ namespace Fscc {
         int output;
     };
 
-} /* namespace FSCC */
+} /* namespace Fscc */
 
 #endif

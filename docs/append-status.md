@@ -17,7 +17,7 @@ a few methods of enabling this additional data.
 
 ## Get
 ```c++
-bool GetAppendStatus(void) throw(SystemException);
+bool GetAppendStatus(void) throw();
 ```
 
 ###### Examples
@@ -33,7 +33,7 @@ status = p.GetAppendStatus();
 
 ## Enable
 ```c++
-void EnableAppendStatus(void) throw(SystemException);
+void EnableAppendStatus(void) throw();
 ```
 
 ###### Examples
@@ -47,7 +47,7 @@ p.EnableAppendStatus()
 
 ## Disable
 ```c++
-void DisableAppendStatus(void) throw(SystemException);
+void DisableAppendStatus(void) throw();
 ```
 
 

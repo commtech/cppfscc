@@ -15,7 +15,7 @@
 
 ## Get
 ```c++
-unsigned GetTxModifiers(void) throw(SystemException);
+unsigned GetTxModifiers(void) throw();
 ```
 
 ###### Examples
@@ -31,7 +31,7 @@ modifiers = p.GetTxModifiers();
 
 ## Set
 ```c++
-void SetTxModifiers(unsigned modifiers) throw(SystemException);
+void SetTxModifiers(unsigned modifiers) throw();
 ```
 
 | Parameter   | Type           | Description

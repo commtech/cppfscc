@@ -10,7 +10,7 @@
 
 ## Get
 ```c++
-bool GetRxMultiple(void) throw(SystemException);
+bool GetRxMultiple(void) throw();
 ```
 
 ###### Examples
@@ -26,7 +26,7 @@ status = p.GetRxMultiple();
 
 ## Enable
 ```c++
-void EnableRxMultiple(void) throw(SystemException);
+void EnableRxMultiple(void) throw();
 ```
 
 ###### Examples
@@ -40,7 +40,7 @@ p.EnableRxMultiple();
 
 ## Disable
 ```c++
-void DisableRxMultiple(void) throw(SystemException);
+void DisableRxMultiple(void) throw();
 ```
 
 ###### Examples

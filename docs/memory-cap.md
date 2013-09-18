@@ -32,7 +32,7 @@ The `Reset()` helper function should be called any time you want to reuse a
 
 ## Get
 ```c++
-MemoryCap GetMemoryCap(void) throw(SystemException);
+MemoryCap GetMemoryCap(void) throw();
 ```
 
 ###### Examples
@@ -49,7 +49,7 @@ values.
 
 ## Set
 ```c++
-void SetMemoryCap(const MemoryCap &memcap) throw(SystemException);
+void SetMemoryCap(const MemoryCap &memcap) throw();
 ```
 
 | Parameter | Type        | Description

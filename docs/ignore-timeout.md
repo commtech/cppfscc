@@ -10,7 +10,7 @@
 
 ## Get
 ```c++
-bool GetIgnoreTimeout(void) throw(SystemException);
+bool GetIgnoreTimeout(void) throw();
 ```
 
 
@@ -27,7 +27,7 @@ status = p.GetIgnoreTimeout();
 
 ## Enable
 ```c++
-void EnableIgnoreTimeout(void) throw(SystemException);
+void EnableIgnoreTimeout(void) throw();
 ```
 
 ###### Examples
@@ -41,7 +41,7 @@ p.EnableIgnoreTimeout()
 
 ## Disable
 ```c++
-void DisableIgnoreTimeout(void) throw(SystemException);
+void DisableIgnoreTimeout(void) throw();
 ```
 
 ###### Examples

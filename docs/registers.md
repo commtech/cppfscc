@@ -100,7 +100,7 @@ p.SetRegisters(regs);
 
 ## Get
 ```c++
-Registers GetRegisters(const Registers &regs) throw(SystemException);
+Registers GetRegisters(const Registers &regs) throw();
 ```
 
 | Parameter | Type        | Description
