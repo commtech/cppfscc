@@ -4,7 +4,7 @@ This README file is best viewed [online](http://github.com/commtech/cppfscc/).
 ## Installing Library
 
 ##### Downloading Library
-- You can use the pre-built driver package that is included with the driver
+- You can use the pre-built library files that are included with the driver
 - Or, you can download the latest library version from
 [Github releases](https://github.com/commtech/cppfscc/releases).
 
@@ -16,8 +16,8 @@ Lets get started with a quick programming example for fun.
 _This tutorial has already been set up for you at_ 
 [`examples/tutorial.cpp`](https://github.com/commtech/cppfscc/tree/master/examples/tutorial.cpp).
 
-First, drop `cfscc.dll` and `cfscc.lib` into a test directory. Now that those files are 
-copied over, create a new C file (named tutorial.c) with the following code.
+First, drop `cppfscc.dll`, `cppfscc.lib` and `cfscc.dll` into a test directory. Now that those 
+files are copied over, create a new C++ file (named tutorial.cpp) with the following code.
 
 ```c++
 #include <iostream> /* cout, endl */
@@ -43,7 +43,7 @@ For this example I will use the Visual Studio command line compiler, but
 you can use your compiler of choice.
 
 ```
-# cl /EHsc tutorial.cpp ..\cppfscc.lib /I ..\src
+# cl /EHsc tutorial.cpp cppfscc.lib /I <CPPFSCC_DIR>\src
 ```
 
 Now attach the included loopback connector.

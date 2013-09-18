@@ -2,12 +2,12 @@
 
 int main(void)
 {
-	Fscc::Port p(0);
+    Fscc::Port p(0);
 
     bool status = p.GetAppendTimestamp();
     
     p.EnableAppendTimestamp();
-	p.DisableAppendTimestamp();
+    p.DisableAppendTimestamp();
 
-	return 0;
+    return 0;
 }
