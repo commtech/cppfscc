@@ -21,6 +21,10 @@ Port(const Port &other) throw(SystemException);
 Port& operator=(const Port &other) throw(SystemException);
 ```
 
+| Exception             | Cause
+| --------------------- | --------------------------------------------------------------------
+| PortNotFoundException | That port is not found on the system
+
 ###### Examples
 Connect to port 0.
 ```c++

@@ -20,6 +20,11 @@ int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 | `size`       | `unsigned`       | The number of bytes to transmit
 | `o`          | `OVERLAPPED *`   | [Overlapped IO structure](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686358.aspx)
 
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| TimeoutException        | You are executing a command that requires a transmit clock present
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+
 
 ###### Examples
 ```c++
@@ -45,6 +50,11 @@ unsigned Write(const char *buf, unsigned size) throw(SystemException);
 | ---------------------------
 | Number of bytes transmitted
 
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| TimeoutException        | You are executing a command that requires a transmit clock present
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+
 ###### Examples
 ```c++
 #include <fscc.hpp>
@@ -68,6 +78,11 @@ unsigned Write(const std::string &str) throw(SystemException);
 | Return
 | ---------------------------
 | Number of bytes transmitted
+
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| TimeoutException        | You are executing a command that requires a transmit clock present
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
 
 ###### Examples
 ```c++

@@ -45,10 +45,14 @@ int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 | `size`       | `unsigned`       | The data buffer size
 | `o`          | `OVERLAPPED *`   | [Overlapped IO structure](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686358.aspx)
 
-| Return Value            | Cause
-| ----------------------- | ------------------------------------------------------------------
-| 0                       | Success
-| `FSCC_BUFFER_TOO_SMALL` | The read size is smaller than the next frame (in a frame based mode)
+| Return Value | Cause
+| ------------ | ------------------------------------------------------------------
+| 0            | Success
+| ~            | Unknown system error
+
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
 
 ###### Examples
 ```c++
@@ -74,6 +78,10 @@ unsigned Read(char *buf, unsigned size) throw(SystemException);
 | Return
 | ---------------------------
 | Number of bytes read
+
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
 
 ###### Examples
 ```c++
@@ -102,6 +110,10 @@ unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException)
 | ---------------------------
 | Number of bytes read
 
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+
 ###### Examples
 ```c++
 #include <fscc.hpp>
@@ -127,6 +139,10 @@ public std::string Read(unsigned size=4096);
 | ---------------------------
 | The latest frame
 
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+
 ###### Examples
 ```c++
 #include <fscc.hpp>
@@ -148,6 +164,10 @@ public string Read(unsigned size, unsigned timeout);
 | Return
 | ---------------------------
 | The latest frame
+
+| Exception               | Cause
+| ----------------------- | --------------------------------------------------------------------
+| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
 
 ###### Examples
 ```c#
