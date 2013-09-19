@@ -28,7 +28,7 @@ namespace Fscc {
 class SystemException : public std::runtime_error
 {
 public:
-    SystemException(unsigned error_code, const std::string& error_msg = ""); //TODO throw(?)
+    SystemException(const std::string& error_msg = "");
 
     unsigned error_code(void) const throw();
 
@@ -39,7 +39,7 @@ private:
 class PortNotFoundException : public SystemException
 {
 public:
-    PortNotFoundException(unsigned port_num); //TODO throw(?)
+    PortNotFoundException(unsigned port_num);
 
     unsigned port_num(void) const throw();
 
@@ -50,15 +50,15 @@ private:
 class TimeoutException : public SystemException
 {
 public:
-    TimeoutException(void); //TODO throw(?)
+    TimeoutException(void);
 };
 
 class BufferTooSmallException : public SystemException
 {
 public:
-    BufferTooSmallException(void); //TODO throw(?)
+    BufferTooSmallException(void);
 };
 
-} /* namespace FSCC */
+} /* namespace Fscc */
 
 #endif

@@ -19,10 +19,19 @@
 */
 
 #include <cstdio>
+#include <sstream>
 
 #include <fscc.h>
 
 #include "fscc.hpp"
+
+template <class T>
+inline std::string to_string(const T& t)
+{
+    std::stringstream ss;
+    ss << t;
+    return ss.str();
+}
 
 namespace Fscc {
 
@@ -57,7 +66,7 @@ void Port::init(unsigned port_num) throw(SystemException)
         throw PortNotFoundException(port_num);
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 } 
 
@@ -78,7 +87,7 @@ Port& Port::operator=(const Port &other)
         int e = fscc_connect(other._port_num, &h2);
 
         if (e) {
-            throw SystemException(e);
+            throw SystemException(to_string(e));
         }
         else {
             cleanup();
@@ -107,7 +116,7 @@ int Port::Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemExcep
         throw TimeoutException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 
     return e;
@@ -130,7 +139,7 @@ unsigned Port::Write(const char *buf, unsigned size) throw(SystemException)
         throw TimeoutException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 
     return bytes_written;
@@ -156,7 +165,7 @@ int Port::Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
         throw BufferTooSmallException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 
     return bytes_read;
@@ -176,7 +185,7 @@ unsigned Port::Read(char *buf, unsigned size) throw(SystemException)
         throw BufferTooSmallException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 
     return bytes_read;
@@ -196,7 +205,7 @@ unsigned Port::Read(char *buf, unsigned size, unsigned timeout) throw(SystemExce
         throw BufferTooSmallException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 
     return bytes_read;
@@ -286,7 +295,7 @@ void Port::SetRegisters(const Registers &regs) throw(SystemException)
         throw TimeoutException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 }
 
@@ -390,7 +399,7 @@ void Port::Purge(bool tx, bool rx) throw(SystemException)
         throw TimeoutException();
 
     default:
-        throw SystemException(e);
+        throw SystemException(to_string(e));
     }
 }
 
