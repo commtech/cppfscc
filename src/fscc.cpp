@@ -29,7 +29,7 @@ namespace Fscc {
 /// <param name="port_num">Used to indicate status.</param>
 Port::Port(unsigned port_num)
 {
-    init(port_num, true);
+    init(port_num);
 }
 
 Port::~Port(void)
@@ -37,19 +37,17 @@ Port::~Port(void)
     cleanup();
 }
 
-void Port::init(unsigned port_num, bool overlapped, HANDLE h) throw()
+void Port::init(unsigned port_num, HANDLE h) throw()
 {
     _port_num = port_num;
-    _overlapped = overlapped;
     _h = h;
 } 
 
-void Port::init(unsigned port_num, bool overlapped) throw(SystemException)
+void Port::init(unsigned port_num) throw(SystemException)
 {
     _port_num = port_num;
-    _overlapped = overlapped;
 
-    int e = fscc_connect(port_num, overlapped, &_h);
+    int e = fscc_connect(port_num, &_h);
 
     switch (e) {
     case 0:
@@ -70,21 +68,21 @@ void Port::cleanup(void) throw()
 
 Port::Port(const Port &other)
 {
-    init(other._port_num, other._overlapped);
+    init(other._port_num);
 }
 
 Port& Port::operator=(const Port &other)
 {
     if (this != &other) {
         HANDLE h2;
-        int e = fscc_connect(other._port_num, other._overlapped, &h2);
+        int e = fscc_connect(other._port_num, &h2);
 
         if (e) {
             throw SystemException(e);
         }
         else {
             cleanup();
-            init(other._port_num, other._overlapped, h2);
+            init(other._port_num, h2);
         }
     }
 
@@ -117,14 +115,23 @@ int Port::Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemExcep
 
 unsigned Port::Write(const char *buf, unsigned size) throw(SystemException)
 {
-    OVERLAPPED o;
-    DWORD bytes_written = 0;
+    unsigned bytes_written = 0;
 
-    memset(&o, 0, sizeof(o));
+    int e = fscc_write_with_blocking(_h, (char *)buf, size, &bytes_written);
 
-    Write(buf, size, &o);
+    switch (e) {
+    case 0:
+        break;
 
-    GetOverlappedResult(_h, &o, &bytes_written, true);
+    case FSCC_BUFFER_TOO_SMALL:
+        throw BufferTooSmallException();
+
+    case FSCC_TIMEOUT:
+        throw TimeoutException();
+
+    default:
+        throw SystemException(e);
+    }
 
     return bytes_written;
 }
@@ -157,14 +164,20 @@ int Port::Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
 
 unsigned Port::Read(char *buf, unsigned size) throw(SystemException)
 {
-    OVERLAPPED o;
-    DWORD bytes_read = 0;
+    unsigned bytes_read;
 
-    memset(&o, 0, sizeof(o));
+    int e = fscc_read_with_blocking(_h, buf, size, &bytes_read);
 
-    Read(buf, size, &o);
+    switch (e) {
+    case 0:
+        break;
 
-    GetOverlappedResult(_h, &o, &bytes_read, true);
+    case FSCC_BUFFER_TOO_SMALL:
+        throw BufferTooSmallException();
+
+    default:
+        throw SystemException(e);
+    }
 
     return bytes_read;
 }

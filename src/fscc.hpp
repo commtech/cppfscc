@@ -77,8 +77,8 @@ namespace Fscc {
         std::string Read(unsigned count, unsigned timeout) throw(SystemException);
 
     protected:
-        void init(unsigned port_num, bool overlapped) throw(SystemException);
-        void init(unsigned port_num, bool overlapped, HANDLE h) throw();
+        void init(unsigned port_num) throw(SystemException);
+        void init(unsigned port_num, HANDLE h) throw();
         void cleanup(void) throw();
 
     private:
