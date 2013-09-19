@@ -36,7 +36,7 @@ inline std::string to_string(const T& t)
 namespace Fscc {
 
 /// <param name="port_num">Used to indicate status.</param>
-Port::Port(unsigned port_num)
+Port::Port(unsigned port_num) throw(SystemException)
 {
     init(port_num);
 }
@@ -46,7 +46,7 @@ Port::~Port(void)
     cleanup();
 }
 
-void Port::init(unsigned port_num, HANDLE h) throw()
+void Port::init(unsigned port_num, fscc_handle h) throw()
 {
     _port_num = port_num;
     _h = h;
@@ -75,15 +75,15 @@ void Port::cleanup(void) throw()
     fscc_disconnect(_h);
 } 
 
-Port::Port(const Port &other)
+Port::Port(const Port &other) throw(SystemException)
 {
     init(other._port_num);
 }
 
-Port& Port::operator=(const Port &other)
+Port& Port::operator=(const Port &other) throw(SystemException)
 {
     if (this != &other) {
-        HANDLE h2;
+        fscc_handle h2;
         int e = fscc_connect(other._port_num, &h2);
 
         if (e) {

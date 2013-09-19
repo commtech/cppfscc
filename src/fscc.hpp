@@ -23,10 +23,21 @@
 
 #pragma warning(disable:4290)
 
-#include <Windows.h>
 #include <string>
 
 #include "sys_exception.hpp"
+
+#ifdef _WIN32
+typedef HANDLE fscc_handle;
+#else
+typedef int fscc_handle;
+#endif
+
+#ifdef _WIN32
+#define DLL_EXPORT __declspec(dllexport)
+#else
+#define DLL_EXPORT
+#endif
 
 namespace Fscc {
     namespace TxModifiers {
@@ -37,7 +48,7 @@ namespace Fscc {
     struct MemoryCap;
     const int UPDATE_VALUE = -2;
 
-    class __declspec(dllexport) Port {
+    class DLL_EXPORT Port {
     public:
         Port(unsigned port_num) throw(SystemException);
 
@@ -78,28 +89,32 @@ namespace Fscc {
 
     protected:
         void init(unsigned port_num) throw(SystemException);
-        void init(unsigned port_num, HANDLE h) throw();
+        void init(unsigned port_num, fscc_handle h) throw();
         void cleanup(void) throw();
 
     private:
-        HANDLE _h;
+        fscc_handle _h;
         unsigned _port_num;
         bool _overlapped;
     };
-        
-    typedef INT64 fscc_register;
 
-    struct __declspec(dllexport) Registers {
+#ifdef _WIN32
+    typedef INT64 fscc_register;
+#else
+    typedef int64_t fscc_register;
+#endif
+
+    struct DLL_EXPORT Registers {
         Registers(void);
         void Reset(void);
 
         /* BAR 0 */
         fscc_register __reserved1[2];
-    
+
         fscc_register FIFOT;
-    
+
         fscc_register __reserved2[2];
-    
+
         fscc_register CMDR;
         fscc_register STAR; /* Read-only */
         fscc_register CCR0;
@@ -115,9 +130,9 @@ namespace Fscc {
         fscc_register PPR;
         fscc_register TCR;
         fscc_register VSTR; /* Read-only */
-    
+
         fscc_register __reserved4[1];
-    
+
         fscc_register IMR;
         fscc_register DPLLR;
 
@@ -125,10 +140,10 @@ namespace Fscc {
         fscc_register FCR;
     };
 
-    struct __declspec(dllexport) MemoryCap {
+    struct DLL_EXPORT MemoryCap {
         MemoryCap(void);
         void Reset(void);
-        
+
         int input;
         int output;
     };

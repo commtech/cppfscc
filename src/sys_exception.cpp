@@ -18,8 +18,6 @@
 
 */
 
-#include <Windows.h>
-
 #include <fscc.h>
 
 #include "sys_exception.hpp"
@@ -50,4 +48,4 @@ BufferTooSmallException::BufferTooSmallException(void) : SystemException("Buffer
 {
 }
 
-} /* namespace FSCC */
+} /* namespace Fscc */
