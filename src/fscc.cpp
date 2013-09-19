@@ -91,19 +91,31 @@ Port& Port::operator=(const Port &other)
     return *this;
 }
 
-int Port::Write(const char *buf, unsigned size, OVERLAPPED *o)
+int Port::Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
 {
     unsigned bytes_written = 0;
 
     int e = fscc_write(_h, (char *)buf, size, &bytes_written, o);
 
-    if (e >= 1 && e != 997)
+    switch (e) {
+    case 0:
+    case 997: // ERROR_IO_PENDING
+        break;
+
+    case FSCC_BUFFER_TOO_SMALL:
+        throw BufferTooSmallException();
+
+    case FSCC_TIMEOUT:
+        throw TimeoutException();
+
+    default:
         throw SystemException(e);
+    }
 
     return e;
 }
 
-unsigned Port::Write(const char *buf, unsigned size) 
+unsigned Port::Write(const char *buf, unsigned size) throw(SystemException)
 {
     OVERLAPPED o;
     DWORD bytes_written = 0;
@@ -117,24 +129,33 @@ unsigned Port::Write(const char *buf, unsigned size)
     return bytes_written;
 }
 
-unsigned Port::Write(const std::string &str)
+unsigned Port::Write(const std::string &str) throw(SystemException)
 {
     return Write(str.c_str(), str.length());
 }
 
-int Port::Read(char *buf, unsigned size, OVERLAPPED *o)
+int Port::Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
 {
     unsigned bytes_read;
 
     int e = fscc_read(_h, buf, size, &bytes_read, o);
 
-    if (e >= 1 && e != 997)
+    switch (e) {
+    case 0:
+    case 997: // ERROR_IO_PENDING
+        break;
+
+    case FSCC_BUFFER_TOO_SMALL:
+        throw BufferTooSmallException();
+
+    default:
         throw SystemException(e);
+    }
 
     return bytes_read;
 }
 
-unsigned Port::Read(char *buf, unsigned size)
+unsigned Port::Read(char *buf, unsigned size) throw(SystemException)
 {
     OVERLAPPED o;
     DWORD bytes_read = 0;
@@ -148,14 +169,22 @@ unsigned Port::Read(char *buf, unsigned size)
     return bytes_read;
 }
 
-unsigned Port::Read(char *buf, unsigned size, unsigned timeout)
+unsigned Port::Read(char *buf, unsigned size, unsigned timeout) throw(SystemException)
 {
     unsigned bytes_read;
 
     int e = fscc_read_with_timeout(_h, buf, size, &bytes_read, timeout);
 
-    if (e >= 1)
+    switch (e) {
+    case 0:
+        break;
+
+    case FSCC_BUFFER_TOO_SMALL:
+        throw BufferTooSmallException();
+
+    default:
         throw SystemException(e);
+    }
 
     return bytes_read;
 }
