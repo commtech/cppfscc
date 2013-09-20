@@ -1,8 +1,8 @@
 TARGET = cppfscc
 
-SOURCES = src/fscc.cpp src/sys_exception.cpp
-HEADERS = src/fscc.hpp src/sys_exception.hpp ../cfscc/src/fscc.h
 CFC_DIR = ..\cfscc
+SOURCES = src/fscc.cpp src/sys_exception.cpp
+HEADERS = src/fscc.hpp src/sys_exception.hpp $(CFC_DIR)/src/fscc.h
 LIBS = $(CFC_DIR)\cfscc.lib
 LIBSD = $(CFC_DIR)\cfsccd.lib
 
