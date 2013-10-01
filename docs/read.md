@@ -50,9 +50,9 @@ int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 | 0            | Success
 | ~            | Unknown system error
 
-| Exception               | Cause
-| ----------------------- | --------------------------------------------------------------------
-| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+| Exception               | Base Exception  | Cause
+| ----------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
 
 ###### Examples
 ```c++
@@ -79,9 +79,9 @@ unsigned Read(char *buf, unsigned size) throw(SystemException);
 | ---------------------------
 | Number of bytes read
 
-| Exception               | Cause
-| ----------------------- | --------------------------------------------------------------------
-| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+| Exception               | Base Exception  | Cause
+| ----------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
 
 ###### Examples
 ```c++
@@ -110,9 +110,9 @@ unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException)
 | ---------------------------
 | Number of bytes read
 
-| Exception               | Cause
-| ----------------------- | --------------------------------------------------------------------
-| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+| Exception               | Base Exception  | Cause
+| ----------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
 
 ###### Examples
 ```c++
@@ -139,9 +139,9 @@ public std::string Read(unsigned size=4096);
 | ---------------------------
 | The latest frame
 
-| Exception               | Cause
-| ----------------------- | --------------------------------------------------------------------
-| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+| Exception               | Base Exception  | Cause
+| ----------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
 
 ###### Examples
 ```c++
@@ -165,9 +165,9 @@ public string Read(unsigned size, unsigned timeout);
 | ---------------------------
 | The latest frame
 
-| Exception               | Cause
-| ----------------------- | --------------------------------------------------------------------
-| BufferTooSmallException | The read size is smaller than the next frame (in a frame based mode)
+| Exception               | Base Exception  | Cause
+| ----------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
 
 ###### Examples
 ```c#
