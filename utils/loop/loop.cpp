@@ -76,7 +76,7 @@ int init(Fscc::Port &p)
     p.DisableRxMultiple();
     p.DisableAppendStatus();
     p.DisableAppendTimestamp();
-    p.SetTxModifiers(Fscc::XF);
+    p.SetTxModifiers(Fscc::TxModifiers::XF);
     p.DisableIgnoreTimeout();
 
     r.FIFOT = 0x08001000;
