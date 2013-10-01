@@ -40,11 +40,6 @@ class PortNotFoundException : public SystemException
 {
 public:
     PortNotFoundException(unsigned port_num);
-
-    unsigned port_num(void) const throw();
-
-private:
-    unsigned _port_num;
 };
 
 class InvalidAccessException : public SystemException

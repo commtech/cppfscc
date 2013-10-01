@@ -19,8 +19,12 @@
 */
 
 #include <fscc.h>
+#include <sstream>
 
 #include "sys_exception.hpp"
+
+#define SSTR(x) dynamic_cast< std::ostringstream & >( \
+        ( std::ostringstream() << std::dec << x ) ).str()
 
 namespace Fscc {
 
@@ -29,13 +33,9 @@ SystemException::SystemException(const std::string& error_msg) : std::runtime_er
 }
 
 
-PortNotFoundException::PortNotFoundException(unsigned port_num) : _port_num(port_num), SystemException("Port not found")
+PortNotFoundException::PortNotFoundException(unsigned port_num)
+    : SystemException(SSTR("Port " << + port_num << " not found"))
 {
-}
-
-unsigned PortNotFoundException::port_num(void) const throw()
-{
-    return _port_num;
 }
 
 
