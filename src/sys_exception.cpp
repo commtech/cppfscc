@@ -44,7 +44,7 @@ InvalidAccessException::InvalidAccessException(void) : SystemException("Invalid 
 }
 
 
-TimeoutException::TimeoutException(void) : SystemException("Port timed out")
+TimeoutException::TimeoutException(void) : SystemException("Command timed out (missing clock)")
 {
 }
 
