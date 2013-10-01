@@ -47,6 +47,12 @@ private:
     unsigned _port_num;
 };
 
+class InvalidAccessException : public SystemException
+{
+public:
+    InvalidAccessException(void);
+};
+
 class TimeoutException : public SystemException
 {
 public:

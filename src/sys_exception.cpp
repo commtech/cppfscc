@@ -39,6 +39,11 @@ unsigned PortNotFoundException::port_num(void) const throw()
 }
 
 
+InvalidAccessException::InvalidAccessException(void) : SystemException("Invalid access")
+{
+}
+
+
 TimeoutException::TimeoutException(void) : SystemException("Port timed out")
 {
 }

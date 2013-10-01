@@ -65,6 +65,9 @@ void Port::init(unsigned port_num) throw(SystemException)
     case FSCC_PORT_NOT_FOUND:
         throw PortNotFoundException(port_num);
 
+    case FSCC_INVALID_ACCESS:
+        throw InvalidAccessException();
+
     default:
         throw SystemException(to_string(e));
     }
