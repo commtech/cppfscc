@@ -1,0 +1,3 @@
+[submodule "libs/cfscc"]
+	path = libs/cfscc
+	url = git://github.com/commtech/cfscc.git
