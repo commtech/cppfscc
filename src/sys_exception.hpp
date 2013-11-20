@@ -60,6 +60,12 @@ public:
     BufferTooSmallException(void);
 };
 
+class InvalidModeException : public SystemException
+{
+public:
+    InvalidModeException(void);
+};
+
 } /* namespace Fscc */
 
 #endif

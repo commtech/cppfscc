@@ -118,6 +118,9 @@ int Port::Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemExcep
     case FSCC_TIMEOUT:
         throw TimeoutException();
 
+    case FSCC_INVALID_MODE:
+        throw InvalidModeException();
+
     default:
         throw SystemException(to_string(e));
     }
@@ -140,6 +143,9 @@ unsigned Port::Write(const char *buf, unsigned size) throw(SystemException)
 
     case FSCC_TIMEOUT:
         throw TimeoutException();
+
+    case FSCC_INVALID_MODE:
+        throw InvalidModeException();
 
     default:
         throw SystemException(to_string(e));
@@ -167,6 +173,9 @@ int Port::Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
     case FSCC_BUFFER_TOO_SMALL:
         throw BufferTooSmallException();
 
+    case FSCC_INVALID_MODE:
+        throw InvalidModeException();
+
     default:
         throw SystemException(to_string(e));
     }
@@ -187,6 +196,9 @@ unsigned Port::Read(char *buf, unsigned size) throw(SystemException)
     case FSCC_BUFFER_TOO_SMALL:
         throw BufferTooSmallException();
 
+    case FSCC_INVALID_MODE:
+        throw InvalidModeException();
+
     default:
         throw SystemException(to_string(e));
     }
@@ -206,6 +218,9 @@ unsigned Port::Read(char *buf, unsigned size, unsigned timeout) throw(SystemExce
 
     case FSCC_BUFFER_TOO_SMALL:
         throw BufferTooSmallException();
+
+    case FSCC_INVALID_MODE:
+        throw InvalidModeException();
 
     default:
         throw SystemException(to_string(e));

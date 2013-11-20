@@ -50,9 +50,10 @@ int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 | 0            | Success
 | ~            | Unknown system error
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | ----------------------------------------------
-| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException     | SystemException | The buffer size is smaller than the next frame
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
@@ -79,9 +80,10 @@ unsigned Read(char *buf, unsigned size) throw(SystemException);
 | ---------------------------
 | Number of bytes read
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | ----------------------------------------------
-| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException     | SystemException | The buffer size is smaller than the next frame
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
@@ -110,9 +112,10 @@ unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException)
 | ---------------------------
 | Number of bytes read
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | ----------------------------------------------
-| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException     | SystemException | The buffer size is smaller than the next frame
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
@@ -139,9 +142,10 @@ public std::string Read(unsigned size=4096);
 | ---------------------------
 | The latest frame
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | ----------------------------------------------
-| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException     | SystemException | The buffer size is smaller than the next frame
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
@@ -165,9 +169,10 @@ public string Read(unsigned size, unsigned timeout);
 | ---------------------------
 | The latest frame
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | ----------------------------------------------
-| BufferTooSmallException | SystemException | The buffer size is smaller than the next frame
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | ----------------------------------------------
+| BufferTooSmallException     | SystemException | The buffer size is smaller than the next frame
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c#

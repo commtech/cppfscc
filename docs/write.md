@@ -20,10 +20,11 @@ int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 | `size`       | `unsigned`       | The number of bytes to transmit
 | `o`          | `OVERLAPPED *`   | [Overlapped IO structure](http://msdn.microsoft.com/en-us/library/windows/desktop/ms686358.aspx)
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | --------------------------------------------------
-| BufferTooSmallException | SystemException | The write size exceeds the output memory usage cap
-| TimeoutException        | SystemException | Command timed out (missing clock)
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | --------------------------------------------------
+| BufferTooSmallException     | SystemException | The write size exceeds the output memory usage cap
+| TimeoutException            | SystemException | Command timed out (missing clock)
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 
 ###### Examples
@@ -50,10 +51,11 @@ unsigned Write(const char *buf, unsigned size) throw(SystemException);
 | ---------------------------
 | Number of bytes transmitted
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | --------------------------------------------------
-| BufferTooSmallException | SystemException | The write size exceeds the output memory usage cap
-| TimeoutException        | SystemException | Command timed out (missing clock)
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | --------------------------------------------------
+| BufferTooSmallException     | SystemException | The write size exceeds the output memory usage cap
+| TimeoutException            | SystemException | Command timed out (missing clock)
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
@@ -79,10 +81,11 @@ unsigned Write(const std::string &str) throw(SystemException);
 | ---------------------------
 | Number of bytes transmitted
 
-| Exception               | Base Exception  | Cause
-| ----------------------- | --------------- | --------------------------------------------------
-| BufferTooSmallException | SystemException | The write size exceeds the output memory usage cap
-| TimeoutException        | SystemException | Command timed out (missing clock)
+| Exception                   | Base Exception  | Cause
+| --------------------------- | --------------- | --------------------------------------------------
+| BufferTooSmallException     | SystemException | The write size exceeds the output memory usage cap
+| TimeoutException            | SystemException | Command timed out (missing clock)
+| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
