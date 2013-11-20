@@ -21,10 +21,10 @@ Port(const Port &other) throw(SystemException);
 Port& operator=(const Port &other) throw(SystemException);
 ```
 
-| Exception              | Cause
-| ---------------------- | ------------------------
-| PortNotFoundException  | Port not found
-| InvalidAccessException | Insufficient permissions
+| Exception                | Base Exception    | Cause
+| ------------------------ | ----------------- | ------------------------
+| `PortNotFoundException`  | `SystemException` | Port not found
+| `InvalidAccessException` | `SystemException` | Insufficient permissions
 
 ###### Examples
 Connect to port 0.
