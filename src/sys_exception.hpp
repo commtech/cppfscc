@@ -60,10 +60,10 @@ public:
     BufferTooSmallException(void);
 };
 
-class InvalidModeException : public SystemException
+class IncorrectModeException : public SystemException
 {
 public:
-    InvalidModeException(void);
+    IncorrectModeException(void);
 };
 
 } /* namespace Fscc */

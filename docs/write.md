@@ -24,7 +24,7 @@ int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 | --------------------------- | --------------- | --------------------------------------------------
 | BufferTooSmallException     | SystemException | The write size exceeds the output memory usage cap
 | TimeoutException            | SystemException | Command timed out (missing clock)
-| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
+| IncorrectModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 
 ###### Examples
@@ -55,7 +55,7 @@ unsigned Write(const char *buf, unsigned size) throw(SystemException);
 | --------------------------- | --------------- | --------------------------------------------------
 | BufferTooSmallException     | SystemException | The write size exceeds the output memory usage cap
 | TimeoutException            | SystemException | Command timed out (missing clock)
-| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
+| IncorrectModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++
@@ -85,7 +85,7 @@ unsigned Write(const std::string &str) throw(SystemException);
 | --------------------------- | --------------- | --------------------------------------------------
 | BufferTooSmallException     | SystemException | The write size exceeds the output memory usage cap
 | TimeoutException            | SystemException | Command timed out (missing clock)
-| InvalidModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
+| IncorrectModeException        | SystemException | Using the /dev/fsccX node while in asynchronous mode
 
 ###### Examples
 ```c++

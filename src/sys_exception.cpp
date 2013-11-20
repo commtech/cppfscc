@@ -53,4 +53,9 @@ BufferTooSmallException::BufferTooSmallException(void) : SystemException("Buffer
 {
 }
 
+
+IncorrectModeException::IncorrectModeException(void) : SystemException("Incorrect mode")
+{
+}
+
 } /* namespace Fscc */
