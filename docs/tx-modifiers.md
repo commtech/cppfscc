@@ -43,7 +43,7 @@ void SetTxModifiers(unsigned modifiers) throw();
 #include <fscc.hpp>
 ...
 
-p.SetTxModifiers(Fscc::XF | Fscc::XREP);
+p.SetTxModifiers(Fscc::TXT | Fscc::XREP);
 ```
 
 
