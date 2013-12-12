@@ -78,6 +78,10 @@ namespace Fscc {
         void DisableRxMultiple(void) throw();
         void Purge(bool tx=true, bool rx=false) throw(SystemException);
 
+        int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw();
+        unsigned TrackInterrupts(unsigned interrupts) throw(SystemException);
+        unsigned TrackInterrupts(unsigned interrupts, unsigned timeout) throw(SystemException);
+
         int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
         unsigned Write(const char *buf, unsigned size) throw(SystemException);
         unsigned Write(const std::string &str) throw(SystemException);

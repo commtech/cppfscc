@@ -180,7 +180,7 @@ int Port::Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
         throw SystemException(to_string(e));
     }
 
-    return bytes_read;
+    return e;
 }
 
 unsigned Port::Read(char *buf, unsigned size) throw(SystemException)
@@ -419,6 +419,35 @@ void Port::Purge(bool tx, bool rx) throw(SystemException)
     default:
         throw SystemException(to_string(e));
     }
+}
+
+int Port::TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw()
+{
+    return fscc_track_interrupts(_h, interrupts, matches, o);
+}
+
+unsigned Port::TrackInterrupts(unsigned interrupts) throw(SystemException)
+{
+    unsigned matches = 0;
+
+    int e = fscc_track_interrupts_with_blocking(_h, interrupts, &matches);
+
+    if (e)
+        throw SystemException(to_string(e));
+
+    return matches;
+}
+
+unsigned Port::TrackInterrupts(unsigned interrupts, unsigned timeout) throw(SystemException)
+{
+    unsigned matches = 0;
+
+    int e = fscc_track_interrupts_with_timeout(_h, interrupts, &matches, timeout);
+
+    if (e)
+        throw SystemException(to_string(e));
+
+    return matches;
 }
 
 Registers::Registers()
