@@ -10,7 +10,7 @@
 
 ## Track Interrupts (Overlapped)
 ```c++
-int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw();
+int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw(SystemException);
 
 ```
 

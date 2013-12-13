@@ -421,9 +421,20 @@ void Port::Purge(bool tx, bool rx) throw(SystemException)
     }
 }
 
-int Port::TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw()
+int Port::TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw(SystemException)
 {
-    return fscc_track_interrupts(_h, interrupts, matches, o);
+    int e = fscc_track_interrupts(_h, interrupts, matches, o);
+
+    switch (e) {
+    case 0:
+    case 997: // ERROR_IO_PENDING
+        break;
+
+    default:
+        throw SystemException(to_string(e));
+    }
+    
+    return e;
 }
 
 unsigned Port::TrackInterrupts(unsigned interrupts) throw(SystemException)
