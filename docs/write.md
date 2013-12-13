@@ -33,8 +33,9 @@ int Write(const char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 ...
 
 char odata[] = "Hello world!";
+OVERLAPPED o;
 
-p.Write(odata, sizeof(odata), o);
+p.Write(odata, sizeof(odata), &o);
 ```
 
 ## Write

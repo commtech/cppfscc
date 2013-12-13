@@ -31,8 +31,9 @@ int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw
 ...
 
 unsigned matches;
+OVERLAPPED o;
 
-p.TrackInterrupts(0x00000400, &matches, o);
+p.TrackInterrupts(0x00000400, &matches, &o);
 ```
 
 ## Track Interrupts (Blocking)

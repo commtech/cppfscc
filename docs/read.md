@@ -62,8 +62,9 @@ int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
 
 char idata[20] = {0};
 unsigned bytes_read;
+OVERLAPPED o;
 
-p.Read(idata, sizeof(idata), o);
+p.Read(idata, sizeof(idata), &o);
 ```
 
 ## Read (Blocking)
