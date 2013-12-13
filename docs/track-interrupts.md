@@ -1,4 +1,4 @@
-# Read
+# Track Interrupts
 
 
 ###### Support
@@ -8,7 +8,7 @@
 | `cppfscc`      | `v1.0.0`
 
 
-## Read (Overlapped)
+## Track Interrupts (Overlapped)
 ```c++
 int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw();
 
@@ -30,20 +30,19 @@ int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw
 #include <fscc.hpp>
 ...
 
-char idata[20] = {0};
 unsigned matches;
 
 p.TrackInterrupts(0x00000400, &matches, o);
 ```
 
-## Read (Blocking)
+## Track Interrupts (Blocking)
 ```c++
 unsigned TrackInterrupts(unsigned interrupts) throw(SystemException);
 ```
 
-| Parameter    | Type           | Description
-| ------------ | -------------- | -----------------------
-| `interrupts` | `unsigned`     | The interrupt(s) to track
+| Parameter    | Type       | Description
+| ------------ | ---------- | -----------------------
+| `interrupts` | `unsigned` | The interrupt(s) to track
 
 | Return
 | ---------------------------
@@ -55,14 +54,13 @@ unsigned TrackInterrupts(unsigned interrupts) throw(SystemException);
 #include <fscc.hpp>
 ...
 
-char idata[20] = {0};
 unsigned matches;
 
 matches = p.TrackInterrupts(0x00000400);
 ```
 
 
-## Read (Timeout)
+## Track Interrupts (Timeout)
 ```c++
 unsigned TrackInterrupts(unsigned interrupts, unsigned timeout) throw(SystemException);
 ```
@@ -82,7 +80,6 @@ unsigned TrackInterrupts(unsigned interrupts, unsigned timeout) throw(SystemExce
 #include <fscc.hpp>
 ...
 
-char idata[20] = {0};
 unsigned matches;
 
 matches = p.TrackInterrupts(0x00000400, 100);
