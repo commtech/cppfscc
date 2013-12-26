@@ -12,6 +12,11 @@ the frequency generator to finish. If you run into this situation we
 recommend using a larger frequency and then dividing it down to your 
 desired baud rate using the BGR register.
 
+_If you are receiving timeout errors when using slow data rates you can bypass
+the safety checks by using the 
+[`EnableIgnoreTimeout()`](https://github.com/commtech/cppfscc/blob/master/docs/ignore-timeout.md)
+option._
+
 ###### Support
 | Code           | Version
 | -------------- | --------
