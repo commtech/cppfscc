@@ -324,9 +324,20 @@ Registers Port::GetRegisters(const Registers &regs) throw()
     return regs;
 }
 
-void Port::SetClockFrequency(unsigned frequency) throw()
+void Port::SetClockFrequency(unsigned frequency) throw(SystemException)
 {
-    fscc_set_clock_frequency(_h, frequency);
+    int e = fscc_set_clock_frequency(_h, frequency);
+
+    switch (e) {
+    case 0:
+        break;
+
+    case FSCC_INVALID_PARAMETER:
+        throw InvalidParameterException();
+
+    default:
+        throw SystemException(to_string(e));
+    }
 }
 
 bool Port::GetAppendStatus(void) throw()

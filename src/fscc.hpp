@@ -63,7 +63,7 @@ namespace Fscc {
         MemoryCap GetMemoryCap(void) throw();
         void SetRegisters(const Registers &regs) throw(SystemException);
         Registers GetRegisters(const Registers &regs) throw();
-        void SetClockFrequency(unsigned frequency) throw();
+        void SetClockFrequency(unsigned frequency) throw(SystemException);
         bool GetAppendStatus(void) throw();
         void EnableAppendStatus(void) throw();
         void DisableAppendStatus(void) throw();

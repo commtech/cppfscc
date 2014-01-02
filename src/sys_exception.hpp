@@ -66,6 +66,12 @@ public:
     IncorrectModeException(void);
 };
 
+class InvalidParameterException : public SystemException
+{
+public:
+    InvalidParameterException(void);
+};
+
 } /* namespace Fscc */
 
 #endif

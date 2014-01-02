@@ -58,4 +58,9 @@ IncorrectModeException::IncorrectModeException(void) : SystemException("Incorrec
 {
 }
 
+
+InvalidParameterException::InvalidParameterException(void) : SystemException("Invalid parameter")
+{
+}
+
 } /* namespace Fscc */
