@@ -34,6 +34,10 @@ void SetClockFrequency(unsigned frequency) throw();
 | ------------ | ---------- | ----------------------------
 | `frequency`  | `unsigned` | The new clock frequency (hz)
 
+| Exception                   | Base Exception    | Cause
+| --------------------------- | ----------------- | ---------------------------------
+| `InvalidParameterException` | `SystemException` | Clock frequency is out of range (15,000 to 270,000,000)
+
 
 ###### Examples
 Set the port's clock frequency to 18.432 MHz.
