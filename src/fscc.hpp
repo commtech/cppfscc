@@ -27,6 +27,11 @@
 
 #include "sys_exception.hpp"
 
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 #ifdef _WIN32
 typedef HANDLE fscc_handle;
 #else
