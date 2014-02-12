@@ -238,12 +238,12 @@ std::string Port::Read(unsigned size) throw(SystemException)
         Read(buf, size);
     }
     catch (SystemException &e) {
-        delete buf;
+        delete[] buf;
         throw e;
     }
 
     str.assign(buf);
-    delete buf;
+    delete[] buf;
     return str;
 }
 
@@ -256,12 +256,12 @@ std::string Port::Read(unsigned size, unsigned timeout) throw(SystemException)
         Read(buf, size, timeout);
     }
     catch (SystemException &e) {
-        delete buf;
+        delete[] buf;
         throw e;
     }
 
     str.assign(buf);
-    delete buf;
+    delete[] buf;
     return str;
 }
 
