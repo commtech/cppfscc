@@ -6,3 +6,9 @@
 *.exe
 *~
 *.ilk
+
+Debug/
+*.*sdf
+*.filters
+*.user
+*.suo
