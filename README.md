@@ -76,7 +76,7 @@ own program. All of these options are described on their respective documentatio
 - [Read](https://github.com/commtech/cppfscc/blob/master/docs/read.md)
 
 
-## Dependencies
+## Build Dependencies
 - C++ compiler (G++ & Visual Studio tested)
 - [cfscc](https://github.com/commtech/cfscc/) (Included)
 
