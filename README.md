@@ -77,7 +77,8 @@ own program. All of these options are described on their respective documentatio
 
 
 ## Dependencies
-- [FSCC C Library](https://github.com/commtech/cfscc/)
+- C++ compiler (G++ & Visual Studio tested)
+- [cfscc](https://github.com/commtech/cfscc/) (Included)
 
 
 ## API Compatibility
