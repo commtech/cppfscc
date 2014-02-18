@@ -81,6 +81,10 @@ own program. All of these options are described on their respective documentatio
 - [cfscc](https://github.com/commtech/cfscc/) (Included)
 
 
+## Run-time Dependencies
+- OS: Windows XP+ & Linux
+
+
 ## API Compatibility
 We follow [Semantic Versioning](http://semver.org/) when creating releases.
 
