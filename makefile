@@ -1,8 +1,8 @@
 TARGET = cppfscc
 
 CFC_DIR = libs\cfscc
-SOURCES = src/fscc.cpp src/sys_exception.cpp
-HEADERS = src/fscc.hpp src/sys_exception.hpp $(CFC_DIR)/src/fscc.h
+SOURCES = src/fscc.cpp src/sys_exception.cpp src/registers.cpp
+HEADERS = src/fscc.hpp src/sys_exception.hpp src/registers.hpp $(CFC_DIR)/src/fscc.h
 LIBS = $(CFC_DIR)\cfscc.lib
 LIBSD = $(CFC_DIR)\cfsccd.lib
 
@@ -22,4 +22,4 @@ $(LIBSD):
   pushd $(CFC_DIR) & nmake DEBUG & popd
   
 clean:
-  del cppfscc* *.obj
+  del *.dll *.obj *.lib *.pdb
