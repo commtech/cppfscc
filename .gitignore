@@ -6,6 +6,8 @@
 *.exe
 *~
 *.ilk
+bin/
+*.bak
 
 Debug/
 *.*sdf
