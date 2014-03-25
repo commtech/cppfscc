@@ -27,7 +27,6 @@
 
 #include "sys_exception.hpp"
 
-
 #ifdef _WIN32
 #include <Windows.h>
 #endif
@@ -36,6 +35,10 @@
 typedef HANDLE fscc_handle;
 #else
 typedef int fscc_handle;
+#endif
+
+#ifndef _WIN32
+typedef void OVERLAPPED;
 #endif
 
 #ifdef _WIN32

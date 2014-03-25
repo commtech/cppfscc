@@ -8,6 +8,8 @@
 *.ilk
 bin/
 *.bak
+src/*.o
+*.so
 
 Debug/
 *.*sdf
