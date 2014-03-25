@@ -72,6 +72,15 @@ There are likely other configuration options you will need to set up for your ow
 - [Write](docs/write.md)
 
 
+## Visual Studio Integration
+The process for using the library will differ slightly depending on the version of Visual Studio.
+
+1. Configuration Properties -> C/C++ -> General -> Additional Include Directories: (folder containing fscc.hpp)
+2. Configuration Properties -> Linker -> General -> Additional Library Directories: (folder containing cppfscc{d}.lib)
+3. Configuration Properties -> Linker -> Input -> Additional Dependencies: cppfscc{d}.lib
+4. Configuration Properties -> Debugging -> Environment: PATH=%PATH%;(folder containing cppfscc{d}.dll)
+
+
 ## Build Dependencies
 - C++ compiler (G++ & Visual Studio tested)
 - [cfscc](https://github.com/commtech/cfscc/) (Included)

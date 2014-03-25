@@ -9,7 +9,7 @@ int main(void)
     regs.BGR = 0;
 
     p.SetRegisters(regs);
-    
+
     // Re-initialize our registers structure
     regs.Reset();
 

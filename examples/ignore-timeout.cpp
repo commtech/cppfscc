@@ -5,7 +5,7 @@ int main(void)
     Fscc::Port p(0);
 
     bool status = p.GetIgnoreTimeout();
-    
+
     p.EnableIgnoreTimeout();
     p.DisableIgnoreTimeout();
 

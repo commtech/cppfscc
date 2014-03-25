@@ -3,7 +3,7 @@
 int main(void)
 {
     Fscc::Port p(0);
-    
+
     // 18.432 MHz
     p.SetClockFrequency(18432000);
 

@@ -9,7 +9,7 @@ int main(void)
     // Enable transmit repeat & transmit on timer
     p.SetTxModifiers(Fscc::TxModifiers::TXT | Fscc::TxModifiers::XREP);
 
-    // Revert to normal transmission 
+    // Revert to normal transmission
     p.SetTxModifiers(Fscc::TxModifiers::XF);
 
     return 0;
