@@ -31,7 +31,7 @@ pushd %TOP%
 makecat cppfscc.cdf
 popd
 del %TOP%\cppfscc.cdf
-signtool sign /ac "DigiCert High Assurance EV Root CA.crt" /n "Commtech, Inc." /t http://timestamp.digicert.com/ %TOP%\cppfscc.cat
+signtool sign /ac "DigiCert High Assurance EV Root CA.crt" /n "Commtech, Inc." /t http://timestamp.digicert.com/ /sha1 45DE1DC193546ED5217691FC947F8CDBB8A62A66 %TOP%\cppfscc.cat
 
 :copy_source
 echo Copying Source Code Files...

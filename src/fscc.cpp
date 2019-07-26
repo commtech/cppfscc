@@ -186,6 +186,28 @@ int Port::Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException)
     return e;
 }
 
+int Port::Read(char *buf, unsigned size, unsigned &bytes_read, OVERLAPPED *o) throw(SystemException)
+{
+    int e = fscc_read(_h, buf, size, &bytes_read, o);
+
+    switch (e) {
+    case 0:
+    case 997: // ERROR_IO_PENDING
+        break;
+
+    case FSCC_BUFFER_TOO_SMALL:
+        throw BufferTooSmallException();
+
+    case FSCC_INCORRECT_MODE:
+        throw IncorrectModeException();
+
+    default:
+        throw SystemException(to_string(e));
+    }
+
+    return e;
+}
+
 unsigned Port::Read(char *buf, unsigned size) throw(SystemException)
 {
     unsigned bytes_read;
@@ -262,6 +284,16 @@ std::string Port::Read(unsigned size, unsigned timeout) throw(SystemException)
 
     str.assign(buf.get());
     return str;
+}
+
+BOOL Port::GetOverlappedResult(OVERLAPPED *o, unsigned &bytes_read, BOOL bWait) throw()
+{
+	return ::GetOverlappedResult(_h, o, (DWORD *)&bytes_read, bWait);
+}
+
+BOOL Port::CancelIo(void) throw()
+{
+	return ::CancelIo(_h);
 }
 
 unsigned Port::GetTxModifiers(void) throw()

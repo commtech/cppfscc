@@ -87,6 +87,8 @@ namespace Fscc {
         void EnableRxMultiple(void) throw();
         void DisableRxMultiple(void) throw();
         void Purge(bool tx=true, bool rx=false) throw(SystemException);
+        BOOL GetOverlappedResult(OVERLAPPED *o, unsigned &bytes_read, BOOL bWait) throw();
+        BOOL CancelIo(void) throw();
 
         int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw(SystemException);
         unsigned TrackInterrupts(unsigned interrupts) throw(SystemException);
@@ -96,6 +98,7 @@ namespace Fscc {
         unsigned Write(const char *buf, unsigned size) throw(SystemException);
         unsigned Write(const std::string &str) throw(SystemException);
         int Read(char *buf, unsigned size, OVERLAPPED *o) throw(SystemException);
+        int Read(char *buf, unsigned size, unsigned &bytes_read, OVERLAPPED *o) throw(SystemException);
         unsigned Read(char *buf, unsigned size) throw(SystemException);
         unsigned Read(char *buf, unsigned size, unsigned timeout) throw(SystemException);
         std::string Read(unsigned count=4096) throw(SystemException);
