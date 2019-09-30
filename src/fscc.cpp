@@ -286,12 +286,12 @@ std::string Port::Read(unsigned size, unsigned timeout) throw(SystemException)
     return str;
 }
 
-BOOL Port::GetOverlappedResult(OVERLAPPED *o, unsigned &bytes_read, BOOL bWait) throw()
+bool Port::GetOverlappedResult(OVERLAPPED *o, unsigned &bytes_read, bool bWait) throw()
 {
 	return ::GetOverlappedResult(_h, o, (DWORD *)&bytes_read, bWait);
 }
 
-BOOL Port::CancelIo(void) throw()
+bool Port::CancelIo(void) throw()
 {
 	return ::CancelIo(_h);
 }
