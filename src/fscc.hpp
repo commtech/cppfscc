@@ -87,8 +87,8 @@ namespace Fscc {
         void EnableRxMultiple(void) throw();
         void DisableRxMultiple(void) throw();
         void Purge(bool tx=true, bool rx=false) throw(SystemException);
-        BOOL GetOverlappedResult(OVERLAPPED *o, unsigned &bytes_read, BOOL bWait) throw();
-        BOOL CancelIo(void) throw();
+        bool GetOverlappedResult(OVERLAPPED *o, unsigned &bytes_read, bool bWait) throw();
+        bool CancelIo(void) throw();
 
         int TrackInterrupts(unsigned interrupts, unsigned *matches, OVERLAPPED *o) throw(SystemException);
         unsigned TrackInterrupts(unsigned interrupts) throw(SystemException);
